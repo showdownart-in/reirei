@@ -10,10 +10,8 @@ class SplideCarousel extends HTMLElement {
     this.tabGap = this.dataset.gaptab;
     this.arrowDesktop = this.dataset.desktoparrow === "true" ? true : false;
     this.arrowMobile = this.dataset.mobilearrow === "true" ? true : false;
-    this.paginationDesktop =
-      this.dataset.desktoppagination === "true" ? true : false;
-    this.paginationMobile =
-      this.dataset.mobilepagination === "true" ? true : false;
+    this.dataset.desktoppagination === "true" ? true : false;
+    this.dataset.mobilepagination === "true" ? true : false;
     this.mobilePaddingLeft = this.dataset.mobilepaddingleft;
     this.mobilePaddingRight = this.dataset.mobilepaddingright;
     this.desktopPaddingLeft = this.dataset.desktoppaddingleft;
@@ -31,7 +29,7 @@ class SplideCarousel extends HTMLElement {
       perPage: this.perPageDesktop,
       gap: `${this.gapValue}px`,
       arrows: this.arrowDesktop,
-      pagination: this.paginationDesktop,
+      pagination: true,
       autoplay: this.autoplay,
       interval: 3000,
       padding: {
@@ -44,10 +42,10 @@ class SplideCarousel extends HTMLElement {
       },
       breakpoints: {
         749: {
-          type: "loop",
+          type: "slide",
           perPage: this.perpageMobile,
           arrows: this.arrowMobile,
-          pagination: this.paginationMobile,
+          pagination: true,
           gap: 16,
           start: 1,
           padding: {

@@ -61,10 +61,28 @@
         "image_background": "",
         "image_flow": false
       }
+    },
+    "product_card_Gd3fzj": {
+      "type": "product-card",
+      "settings": {
+        "productHeading_text": "This is Content",
+        "productPara_text": "This is Content",
+        "product_list": [
+          "dream-sock™-bedtime-blue",
+          "dream-sock™-bedtime-blue-owlet-cam-2",
+          "dream-sock™-dusty-rose",
+          "dream-sock™-dusty-rose-owlet-cam-2",
+          "monitor-duo-with-cam-2-bedtime-blue",
+          "monitor-duo-with-cam-2-mint",
+          "smart-sock-3-deep-sea-green",
+          "smart-sock-3-dusty-rose"
+        ]
+      }
     }
   },
   "order": [
     "featured_collection",
-    "slider_xWUAPn"
+    "slider_xWUAPn",
+    "product_card_Gd3fzj"
   ]
 }

@@ -1,0 +1,70 @@
+.product-vendor{
+    margin: 0;
+    color: #bbbcbc;
+    font-size: 12px;
+    padding-bottom: .8rem;
+}
+.product-title{
+    color: #212529;
+    text-decoration: none;
+    padding-bottom: .8rem;
+    min-height: 6rem;
+    display: block;
+    font-size: 12px;
+}
+.productMain_container p{
+    margin: 0;
+}
+.price-container{
+    display: flex;
+    gap: 1.2rem;
+}
+
+.add-to-card-sucess {
+    position: fixed;
+    top: 5rem;
+    z-index: 20;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    visibility: hidden; /* Initially hidden */
+    opacity: 0;
+    transform: scale(0.5); /* Start with a smaller scale */
+    transition: visibility 0s linear 0.4s, opacity 0.4s linear, transform 0.4s linear; /* Transition opacity, transform, and visibility with a delay */
+}
+
+.add-to-card-sucess div {
+    background: #b8dcc2;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.add-to-card-sucess.show {
+    visibility: visible; /* Make it visible */
+    opacity: 1;
+    transform: scale(1); /* Scale back to normal size */
+    transition-delay: 0s; /* Remove the delay for the show state */
+}
+.productMain_container{
+    border-bottom: 1.5px solid #ebebeb;
+}
+.red-price{
+    color: red;
+}
+.disabled-btn{
+    opacity: .5;
+}
+.disabled-btn svg{
+cursor: not-allowed;
+
+}
+.custom-buy-btn{
+    cursor: pointer;
+}
+
+
+
+
