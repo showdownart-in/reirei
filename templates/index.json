@@ -66,7 +66,7 @@
       "type": "product-card",
       "settings": {
         "productHeading_text": "This is Content",
-        "productPara_text": "This is Content",
+        "sucess-message": "Added to cart",
         "product_list": [
           "dream-sock™-bedtime-blue",
           "dream-sock™-bedtime-blue-owlet-cam-2",
@@ -76,13 +76,32 @@
           "monitor-duo-with-cam-2-mint",
           "smart-sock-3-deep-sea-green",
           "smart-sock-3-dusty-rose"
-        ]
+        ],
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "brand_section_K8PGUT": {
+      "type": "brand-section",
+      "settings": {
+        "add_all_collections": [
+          "aeromoov",
+          "aerosleep",
+          "babyzen",
+          "bumbo",
+          "dockatot",
+          "elvie",
+          "frontpage",
+          "null"
+        ],
+        "title": "Next With Popular Brands"
       }
     }
   },
   "order": [
     "featured_collection",
     "slider_xWUAPn",
-    "product_card_Gd3fzj"
+    "product_card_Gd3fzj",
+    "brand_section_K8PGUT"
   ]
 }
