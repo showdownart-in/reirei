@@ -50,6 +50,8 @@
   color: rgba(var(--color-foreground), 0.85);
   font-size: 1.4rem;
   margin: 0 2rem 0 0;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .facet-filters__summary {
@@ -178,6 +180,7 @@
   color: rgba(var(--color-foreground), 0.85);
   font-size: 1.4rem;
   margin: -1.5rem 2rem 0 0;
+  font-size: 20px;
 }
 
 .facets__reset {
@@ -193,6 +196,7 @@
   font-size: 1.4rem;
   padding: 0 1.75rem 0 0;
   margin-bottom: 1.5rem;
+  font-weight: 600;
 }
 
 .facets__disclosure fieldset {

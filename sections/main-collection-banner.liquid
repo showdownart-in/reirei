@@ -4,7 +4,7 @@
 {%- style -%}
   @media screen and (max-width: 749px) {
     .collection-hero--with-image .collection-hero__inner {
-      padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
+      padding-bottom: calc({{settings.media_shadow_vertical_offset | at_least: 0}}px + 2rem);
     }
   }
 {%- endstyle -%}
@@ -16,11 +16,37 @@
         <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
         {{- collection.title | escape -}}
       </h1>
+       {% if collection.description != blank %} 
+      <div class="collection-description">{{ collection.description }}</div>
+      {%  endif %}
+      {% assign child_collection = collection.metafields.custom.add_collection.value %}
 
-      {%- if section.settings.show_collection_description -%}
-        <div class="collection-hero__description rte">{{ collection.description }}</div>
-      {%- endif -%}
-    </div>
+      {% if child_collection %}
+        {% assign collection_size = child_collection.count %}
+        {% assign value = collection_size | modulo:2 %}
+
+        {% if collection_size == 3 %}
+          {% assign grid_class = 'grid--3-col-desktop' %}
+        {% else %}
+          {% assign grid_class = 'grid--4-col-desktop' %}
+        {% endif %}
+        <div class="grid grid--2-col grid--2-col-tablet {{ grid_class }} {% if value == 0 %}even{% else %}odd{% endif %}">
+          {% for collections in child_collection %}
+            <div class="grid__item brand-container">
+              <a href= "{{ collections.url }}" class="child-collection-title">{{ collections.title }}</a>
+              <div class="child-collection-image">
+                {% render 'picture',
+                  class: '',
+                  mobileSrc: collections.featured_image,
+                  desktopSrc: collections.featured_image
+                %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+     
 
     {%- if section.settings.show_collection_image and collection.image -%}
       <div class="collection-hero__image-container media gradient">

@@ -97,3 +97,11 @@
 .collection__view-all a:not(.link) {
   margin-top: 1rem;
 }
+
+
+
+/* 
+collection filter css */
+.span.facets__summary-label {
+    font-weight: 600;
+}

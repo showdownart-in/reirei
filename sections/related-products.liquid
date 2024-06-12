@@ -1,6 +1,7 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'section-related-products.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-card.js' | asset_url }}" defer="defer"></script>
 
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
@@ -35,14 +36,15 @@
       >
         {% for recommendation in recommendations.products %}
           <li class="grid__item">
-            {% render 'card-product',
+            {% comment %} {% render 'card-product',
               card_product: recommendation,
               media_aspect_ratio: section.settings.image_ratio,
               image_shape: section.settings.image_shape,
               show_secondary_image: section.settings.show_secondary_image,
               show_vendor: section.settings.show_vendor,
               show_rating: section.settings.show_rating
-            %}
+            %} {% endcomment %}
+               {% render 'product-snippet' product: product, sectionId: section.id %}
           </li>
         {% endfor %}
       </ul>
@@ -52,6 +54,10 @@
     {% render 'mask-arch' %}
   {%- endif -%}
 </div>
+  <div class="add-to-card-sucess">
+     <div>Added To Cart</div>
+
+  </div>
 
 {% schema %}
 {

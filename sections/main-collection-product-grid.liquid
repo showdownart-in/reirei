@@ -1,6 +1,8 @@
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-card.js' | asset_url }}" defer="defer"></script>
+{{ 'product-card.css' | asset_url | stylesheet_tag }}
 
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
@@ -162,7 +164,7 @@
                     style="--animation-order: {{ forloop.index }};"
                   {% endif %}
                 >
-                  {% render 'card-product',
+                  {% comment %} {% render 'card-product',
                     card_product: product,
                     media_aspect_ratio: section.settings.image_ratio,
                     image_shape: section.settings.image_shape,
@@ -172,10 +174,12 @@
                     lazy_load: lazy_load,
                     quick_add: section.settings.quick_add,
                     section_id: section.id
-                  %}
+                  %} {% endcomment %}
+                    {% render 'product-snippet' product: product, sectionId: section.id %}
                 </li>
               {%- endfor -%}
             </ul>
+        
 
             {%- if paginate.pages > 1 -%}
               {% render 'pagination', paginate: paginate, anchor: '' %}
@@ -189,6 +193,11 @@
     {% render 'mask-arch' %}
   {%- endif -%}
 </div>
+    <div class="add-to-card-sucess">
+   <div>Added To Cart</div>
+
+</div>
+
 
 {% schema %}
 {

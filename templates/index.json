@@ -56,7 +56,7 @@
       "settings": {
         "full_width": true,
         "mobile_full_width": true,
-        "padding_top": 36,
+        "padding_top": 0,
         "padding_bottom": 36,
         "image_background": "",
         "image_flow": false
@@ -143,6 +143,24 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "brand_buttons_BJekEr": {
+      "type": "brand-buttons",
+      "settings": {
+        "add_all_collections": [
+          "aeromoov",
+          "aerosleep",
+          "babyzen",
+          "bumbo",
+          "dockatot",
+          "elvie",
+          "null",
+          "owlet"
+        ],
+        "title": "Next With Popular Brands",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -150,6 +168,7 @@
     "slider_xWUAPn",
     "product_card_Gd3fzj",
     "brand_section_K8PGUT",
-    "multicolumn_FcBhQC"
+    "multicolumn_FcBhQC",
+    "brand_buttons_BJekEr"
   ]
 }
