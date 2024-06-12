@@ -47,7 +47,7 @@ class SplideCarousel extends HTMLElement {
           arrows: this.arrowMobile,
           pagination: true,
           gap: 16,
-          start: 1,
+          start: 0,
           padding: {
             left: this.mobilePaddingLeft,
             right: this.mobilePaddingRight,

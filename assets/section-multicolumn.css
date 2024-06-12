@@ -91,6 +91,7 @@
   padding-top: 2.5rem;
   margin-left: 2.5rem;
   margin-right: 2.5rem;
+  position: relative;
 }
 
 .multicolumn-card__info > :nth-child(2) {
@@ -148,6 +149,16 @@
 
 .multicolumn-card__info {
   padding: 2.5rem;
+  position: absolute;
+  position: absolute;
+   top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
 }
 
 .background-none .multicolumn-card__info {
@@ -229,5 +240,32 @@
 @media screen and (min-width: 990px) {
   .multicolumn-list__item--empty {
     display: list-item;
+  }
+}
+.column-heading{
+  font-size: 32px;
+  color: #fff;
+}
+.column-details{
+  font-size: 20px;
+  color: #fff;
+  width: 80%;
+
+}
+.multicolumn-link{
+  padding: .5rem 1rem;
+  background-color: #b8dcc2;
+  color: #000;
+  border-radius: 5px;
+}
+img.multicolumn-card__image {
+    filter: brightness(0.5);
+}
+.multicolumn .multicolumn-heading{
+  margin: 0 auto;
+}
+@media screen and (max-width:749px){
+  .column-details{
+    font-size: 16px;
   }
 }
