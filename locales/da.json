@@ -518,5 +518,16 @@
       "expanded": "Formularen til modtager af gavekort er vist",
       "collapsed": "Formularen til modtager af gavekort er skjult"
     }
+  },
+  "customer_accounts": {
+    "payment_methods": {
+      "store_credit": {
+        "label": "Butikskredit",
+        "accesibility_label": "Butikskredit - {{formattedBalance}}"
+      }
+    },
+    "payment_method_brands": {
+      "storecredit": "Butikskredit"
+    }
   }
 }
