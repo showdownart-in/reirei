@@ -2386,7 +2386,7 @@ product-info .loading__spinner:not(.hidden) ~ *,
   }
 
   .header:not(.header--middle-left, .header--middle-center) .header__inline-menu {
-    margin-top: 1.05rem;
+    /* margin-top: 1.05rem; */
   }
 }
 
@@ -2411,7 +2411,7 @@ product-info .loading__spinner:not(.hidden) ~ *,
 
 .header__heading-link {
   display: inline-block;
-  padding: 0.75rem;
+  /* padding: 0.75rem; */
   text-decoration: none;
   word-break: break-word;
 }
@@ -3453,4 +3453,27 @@ details-disclosure > details {
   .animate--hover-vertical-lift .button:not([disabled]).button--secondary:hover:after {
     --border-offset: 0px; /* Prevent the border from growing on buttons when this effect is on. */
   }
+}
+a.hulk-sidebar-widget.heart-wishlist-animation{
+  display: none;
+}
+.whishlist-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.3rem;
+  text-decoration: none;
+  color: #000;
+  margin-top: 2px;
+}
+.header__icons .icon-wishlist-heart-empty{
+  font-size: 21px !important;
+}
+.header__icons .hulk-wishlist-icon{
+  padding: 0;
+  margin-top: 2px;
+}
+.mobile-search-icon{
+  grid-area: left-icons;
+  margin-left: 30px;
 }

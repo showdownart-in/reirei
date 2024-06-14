@@ -64,7 +64,11 @@ cursor: not-allowed;
 .custom-buy-btn{
     cursor: pointer;
 }
-
+.cart-and-whishlist{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
 
 
 
