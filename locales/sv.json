@@ -518,5 +518,16 @@
       "expanded": "Mottagarformulär för presentkort öppnat",
       "collapsed": "Mottagarformulär för presentkort stängt"
     }
+  },
+  "customer_accounts": {
+    "payment_methods": {
+      "store_credit": {
+        "label": "Butikskredit",
+        "accesibility_label": "Butikskredit – {{formattedBalance}}"
+      }
+    },
+    "payment_method_brands": {
+      "storecredit": "Butikskredit"
+    }
   }
 }
