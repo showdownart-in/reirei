@@ -189,7 +189,7 @@
               
                
               {%- when 'description' -%}
-                 {% comment %} <h1>{{ product.metafields.custom.multipleline | metafield_text }}</h1> {% endcomment %}
+                 <h1> {{ product.metafields.custom.multipleline | metafield_tag }}</h1>
                    {% if product.metafields.custom.pic != blank %}
                     <div class="metafeild-imagecontainer">
                  {% render 'picture',
