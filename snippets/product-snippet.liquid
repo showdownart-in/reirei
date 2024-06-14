@@ -4,7 +4,7 @@
 {% liquid
   assign current_variant = product.selected_or_first_available_variant
   assign image = current_product_variant.featured_image | default: product.featured_image
-  assign image2 = product.images[1] | default: product.featured_image
+  
 %}
 
 <product-cart-element
@@ -14,12 +14,10 @@
 >
   <div class="productMain_container">
     <div class="product-image-container">
-      <a href="{{ product.url }}">
-        {% render 'picture', class: 'media media--portrait first-image', mobileSrc: image, desktopSrc: image %}
+      <a href="{{ product.url }}" class="product-image-snippet">
+        {% render 'picture', class: ' first-image', mobileSrc: image, desktopSrc: image %}
       </a>
-      <a href="{{ product.url }}">
-        {% render 'picture', class: 'media .media--portrait second-image', mobileSrc: image2, desktopSrc: image2 %}
-      </a>
+      
     </div>
 
     <div class="product-card__info">
@@ -40,68 +38,9 @@
   <s>{{ current_variant.compare_at_price | money }}</s>
 </div>
 
-      <div class="color-available">
-        {% assign color_option = product.options_with_values | where: 'name', 'Color' | first %}
-        {% assign color_count = color_option.values | size %}
-
-        {% if color_count > 1 %}
-          Available in {{ color_count }} colors
-        {% endif %}
-      </div>
-
-      {% comment %} {% form 'product', product %}
-        <input type="hidden" name="quantity" value="1">
-        <input type="hidden" name="id" value="{{ current_variant.id }}">
-
-        {% unless product.has_only_default_variant %}
-          <ul>
-            {% for option in product.options_with_values %}
-              {% if option.name == 'Color' %}
-                <li class="option-name">
-                  <label></label>
-                  <ul class="radio-list radio-btn">
-                    {% for value in option.values %}
-                      <label class="color-swatch " style="background-color: {{ value | handle }}">
-                        <input
-                          type="radio"
-                          class="radio-btn"
-                          name="{{ option.name }}"
-                          value="{{ value }}"
-                          {% if option.selected_value == value %}
-                            checked
-                          {% endif %}
-                        >
-                      </label>
-                    {% endfor %}
-                  </ul>
-                </li>
-              {% elsif option.name == 'Size' %}
-                <li class="option-name" style="display: none;">
-                  <label></label>
-                  <ul class="radio-list">
-                    {% for value in option.values %}
-                      <label class="size-swatch" style="background-color: {{ value | handle }}">
-                        <input
-                          type="radio"
-                          class="radio-btn"
-                          name="{{ option.name }}"
-                          value="{{ value }}"
-                          {% if option.selected_value == value %}
-                            checked
-                          {% endif %}
-                        >
-                      </label>
-                    {% endfor %}
-                  </ul>
-                </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        {% endunless %}
-      {% endform %} {% endcomment %}
       <div class="cart-and-whishlist">
       <div class="my-btn custom-buy-btn {% unless current_variant.available %}disabled-btn{% endunless %}">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
           <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9zM1 7v1h14V7zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5"/>
         </svg>
     </div>

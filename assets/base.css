@@ -3477,3 +3477,18 @@ a.hulk-sidebar-widget.heart-wishlist-animation{
   grid-area: left-icons;
   margin-left: 30px;
 }
+@media screen and  (max-width:990px){
+  .header-mobile-icon{
+    width: 3rem;
+
+  }
+  .cart-count-bubble{
+    bottom: 0.8rem;
+    left: 2rem;
+    height: 1.1rem;
+    width: 1.1rem;
+  }
+  .cart-count-bubble span{
+    font-size: 8px;
+  }
+}

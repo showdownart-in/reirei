@@ -68,3 +68,7 @@
   object-fit: cover;
   width: 100%;
 }
+.slider-section .splide__pagination {
+  bottom: 3.5em;
+
+}
