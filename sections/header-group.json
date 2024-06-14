@@ -30,7 +30,7 @@
       "type": "header",
       "settings": {
         "logo_position": "top-center",
-        "menu": "main-menu",
+        "menu": "collection",
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "always",
         "show_line_separator": true,
