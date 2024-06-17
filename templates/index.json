@@ -94,7 +94,7 @@
           "frontpage",
           "null"
         ],
-        "title": "Next With Popular Brands",
+        "title": "Popular Brands",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -161,6 +161,113 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "featured_collection_HcJkgF": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "elvie",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_mr6hGJ": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_aWrqeU": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "aeromoov"
+          }
+        },
+        "featured_collection_hGK3WA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "babyzen"
+          }
+        },
+        "featured_collection_7kyFBN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "elvie"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_aWrqeU",
+        "featured_collection_hGK3WA",
+        "featured_collection_7kyFBN"
+      ],
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collage_bDUQcG": {
+      "type": "collage",
+      "blocks": {
+        "image_3KDLxP": {
+          "type": "image",
+          "settings": {
+          }
+        },
+        "product_EgtEFT": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "second_image": false
+          }
+        },
+        "product_trYFnF": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "second_image": false
+          }
+        }
+      },
+      "block_order": [
+        "image_3KDLxP",
+        "product_EgtEFT",
+        "product_trYFnF"
+      ],
+      "settings": {
+        "heading": "Multimedia collage",
+        "heading_size": "h1",
+        "desktop_layout": "left",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -169,6 +276,9 @@
     "product_card_Gd3fzj",
     "brand_section_K8PGUT",
     "multicolumn_FcBhQC",
-    "brand_buttons_BJekEr"
+    "brand_buttons_BJekEr",
+    "featured_collection_HcJkgF",
+    "collection_list_mr6hGJ",
+    "collage_bDUQcG"
   ]
 }
