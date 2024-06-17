@@ -1472,3 +1472,36 @@ a.product__text {
     border: none;
   }
 }
+
+.product__accordion{
+  width: 50%;
+}
+.collaps-heading{
+  width: 100%;
+}
+.info-svg-container{
+  height: 3rem;
+}
+.info-container{
+  border: 1px solid black;
+  padding:1rem;
+}
+.info-sub{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.contact-info{
+  display:flex;
+}
+.contact-link{
+  text-decoration: none;
+  color: #000;
+}
+.info-sub{
+  border-bottom: 1px solid black;
+  padding: 1rem 0;
+}
+.info-container .info-sub:last-child {
+ border-bottom: none;
+}
