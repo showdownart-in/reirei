@@ -202,6 +202,7 @@
                 </span>
               </p>
             {%- endif -%}
+            
 
             {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
             {%- if card_product.quantity_price_breaks_configured? -%}
@@ -586,3 +587,4 @@
     </div>
   </div>
 {%- endif -%}
+<div class="collection-wishlist"><div style=“text-align: end;“>{% render 'hulkapps-wishlist-collection-btn', productId: card_product.id, variantId: card_product.selected_or_first_available_variant.id %}</div></div>

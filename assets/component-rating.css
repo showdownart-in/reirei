@@ -62,3 +62,10 @@
     display: block;
   }
 }
+.collection-wishlist{
+  position: absolute;
+  top: 0;
+  left: 88%;
+  z-index: 12;
+
+}

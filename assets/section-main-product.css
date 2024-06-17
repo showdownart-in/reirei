@@ -1505,3 +1505,8 @@ a.product__text {
 .info-container .info-sub:last-child {
  border-bottom: none;
 }
+@media screen and (max-width:990px){
+  .product__accordion{
+    width: 100%;
+  }
+}

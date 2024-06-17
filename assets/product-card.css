@@ -72,7 +72,7 @@ cursor: not-allowed;
     display: flex;
     align-items: center;
     gap: 2rem;
-    justify-content: flex-end;
+    flex-direction: row-reverse;
     margin-right: 2rem;
     padding-bottom: 1rem;
 }

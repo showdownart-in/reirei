@@ -49,6 +49,7 @@
     <div class="grid grid--2-col grid--2-col-tablet grid--4-col-desktop">
       {% for collection in section.settings.add_all_collections %}
         <div class="grid__item brand-container">
+           <a href="{{ collection.url }}">
           <div class="collection-image">
             
               {% render 'picture',
@@ -58,8 +59,7 @@
               %}
             
           </div>
-          <a href="{{ collection.url }}" class="brand-title">
-            {{ collection.title }}
+         
           </a>
         </div>
       {% endfor %}

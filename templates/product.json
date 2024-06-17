@@ -49,6 +49,32 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "details_tab_pxzTTa": {
+          "type": "details_tab",
+          "settings": {
+            "coltext": "Details"
+          }
+        },
+        "usestab_A3MyhB": {
+          "type": "usestab",
+          "settings": {
+          }
+        },
+        "shipping_tab_MHtVRt": {
+          "type": "shipping_tab",
+          "settings": {
+            "coltext": "Shipping and Returns",
+            "desc": "$12.99 or FREE on orders $99+. Delivery in 3 – 8 business days*."
+          }
+        },
+        "information_kCkKDF": {
+          "type": "information",
+          "settings": {
+            "shipping_text": "Free standard shipping on orders $99+",
+            "contact_url": "Contact",
+            "button_link": ""
+          }
         }
       },
       "block_order": [
@@ -59,7 +85,11 @@
         "quantity_selector",
         "buy_buttons",
         "description",
-        "share"
+        "share",
+        "details_tab_pxzTTa",
+        "usestab_A3MyhB",
+        "shipping_tab_MHtVRt",
+        "information_kCkKDF"
       ],
       "settings": {
         "enable_sticky_info": true,

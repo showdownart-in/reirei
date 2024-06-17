@@ -33,7 +33,7 @@
         <div class="grid grid--2-col grid--2-col-tablet {{ grid_class }} {% if value == 0 %}even{% else %}odd{% endif %}">
           {% for collections in child_collection %}
             <div class="grid__item brand-container">
-              <a href= "{{ collections.url }}" class="child-collection-title">{{ collections.title }}</a>
+              <a href= "{{ collections.url }}" >
               <div class="child-collection-image">
                 {% render 'picture',
                   class: '',
@@ -41,6 +41,7 @@
                   desktopSrc: collections.featured_image
                 %}
               </div>
+              </a>
             </div>
           {% endfor %}
         </div>

@@ -3492,3 +3492,8 @@ a.hulk-sidebar-widget.heart-wishlist-animation{
     font-size: 8px;
   }
 }
+.middle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
