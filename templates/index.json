@@ -36,6 +36,7 @@
           "type": "collection_block",
           "settings": {
             "desktop_image": "shopify:\/\/shop_images\/image-2.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/Web_Banner-01.jpg",
             "title": "",
             "link": ""
           }
@@ -44,6 +45,7 @@
           "type": "collection_block",
           "settings": {
             "desktop_image": "shopify:\/\/shop_images\/image-1.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/Web_Banner-02.jpg",
             "title": "",
             "link": ""
           }
