@@ -5,7 +5,7 @@
   - product: {Object} product object.
   - option: {Object} current product_option object.
   - block: {Object} block object.
-  - picker_type: {String} type of picker to dispay
+  - picker_type: {String} type of picker to display
 
 
   Usage:
@@ -21,13 +21,24 @@
   assign variants_option1_arr = product.variants | map: 'option1'
   assign variants_option2_arr = product.variants | map: 'option2'
   assign variants_option3_arr = product.variants | map: 'option3'
+  
 
   assign product_form_id = 'product-form-' | append: section.id
 -%}
 
+
 {%- for value in option.values -%}
+  {% for variant in product.variants %}
+  {% assign variant = product.variants %}
+  {% endfor %}
   {%- liquid
     assign option_disabled = true
+    assign downcased_option_name = option.name | downcase
+    if downcased_option_name contains 'color' or downcased_option_name contains 'colour'
+      assign is_color_option = true
+    else
+      assign is_color_option = false
+    endif
 
     for option1_name in variants_option1_arr
       case option.position
@@ -92,23 +103,39 @@
       help_text: help_text
     %}
   {%- elsif picker_type == 'button' -%}
-    <input
-      type="radio"
-      id="{{ input_id }}"
-      name="{{ option.name }}"
-      value="{{ value | escape }}"
-      form="{{ product_form_id }}"
-      {% if option.selected_value == value %}
-        checked
-      {% endif %}
-      {% if option_disabled %}
-        class="disabled"
-      {% endif %}
-    >
-    <label for="{{ input_id }}">
-      {{ value -}}
-      {{ label_unavailable }}
-    </label>
+ 
+
+      <input
+        type="radio"
+        id="{{ input_id }}"
+        name="{{ option.name }}"
+        value="{{ value | escape }}"
+        form="{{ product_form_id }}"
+        {% if option.selected_value == value %}
+          checked
+        {% endif %}
+        {% if option_disabled %}
+          class="disabled"
+        {% endif %}
+      > 
+       {% if option.name == 'Färg' %}
+       
+         <label for="{{ input_id }}">
+          {% render 'picture',
+            mobileSrc:variant.featured_image,
+            desktopSrc:variant.featured_image,
+          %} 
+            {{ variant }}
+      </label>
+     
+      {% else %}
+       <label for="{{ input_id }}">
+        {{ value -}}
+      </label>
+
+       
+        {%  endif %}
+     
   {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
     <option
       value="{{ value | escape }}"
