@@ -102,6 +102,19 @@
                     </h2>
                   </a>
                 </div>
+                {% when 'product_bundle' %}
+                  {% comment %} {% assign bundle_products = product.metafields.custom.bundle_product.value %}
+                    <product-bundle>
+                      <div class="mm-bundle-product-wrapper">     
+                      {% for bundle_product in bundle_products %} 
+                        <div class="mm-bundle-product">
+                          <img src="{{ bundle_product.featured_image | img_url:"master" }}" loading="lazy" height="100%" width="100%">
+                          <div>{{  bundle_product.title  }}</div>
+                          <input type="checkbox" id="mm_bundle" name="{{ bundle_product.selected_or_first_available_variant.id }}">
+                        </div>
+                      {% endfor %}
+                      </div> 
+                    </product-bundle>  {% endcomment %}
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -1124,6 +1137,11 @@
           "label": "Enter text"
         }
       ]
+    },
+    {
+      "type":"product_bundle",
+      "name": "Product bundle",
+      "settings": []
     },
     {
       "type": "usestab",
