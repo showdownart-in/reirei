@@ -16,7 +16,6 @@
           }
         },
         "judge_me_reviews_preview_badge_pWfaUc": {
-
           "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
           }
@@ -92,7 +91,6 @@
         "vendor",
         "title",
         "judge_me_reviews_preview_badge_pWfaUc",
-
         "price",
         "variant_picker",
         "quantity_selector",
@@ -139,7 +137,7 @@
         "padding_bottom": 28
       }
     },
-    "victory_recently_viewed_products_pxtXEc": {
+    "victory_recently_viewed_products_KtCMHK": {
       "type": "victory-recently-viewed-products",
       "settings": {
         "title": "Recently viewed"
@@ -149,6 +147,6 @@
   "order": [
     "main",
     "related-products",
-    "victory_recently_viewed_products_pxtXEc"
+    "victory_recently_viewed_products_KtCMHK"
   ]
 }
