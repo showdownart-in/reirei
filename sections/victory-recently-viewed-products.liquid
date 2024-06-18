@@ -12,10 +12,12 @@
   data-section-type="wizaah-recently-viewed-products" 
   data-section-settings='{{ section_settings }}'
 >
-  <div class="page-width {%- if template.name != 'search' or search.results_count == 0 -%} hidden {% endif %}">
+  <div class="page-width">
     {%- if section.settings.title != blank -%}
-      <h2>{{ section.settings.title | escape }}</h2>      
+      <h2 class="search-heading">{{ section.settings.title | escape }}</h2> 
+       
     {%- endif -%}
+   
   
     <div class="recentlyviewed__container">
       {%- if template.name == 'search' -%}
@@ -39,17 +41,6 @@
   </div>
 </div>
 
-
-{%- comment -%} 
-  By default the section is hidden as we do not know if there are product yet
-{%- endcomment -%}
-{%- if template.name != 'search' or search.results_count == 0 -%}
-  <!-- <style>    
-    #shopify-section-{{ section.id }} {
-      display: none;
-    }
-  </style> -->
-{%- endif -%}
 
 
 {% schema %}

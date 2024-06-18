@@ -44,6 +44,7 @@ wizaah.RecentlyViewedProducts = (function () {
 
     // Return if the search query is empty
     if (queryString === "") {
+      this.toggleHeadingVisibility(false);
       return;
     }
 
@@ -62,10 +63,16 @@ wizaah.RecentlyViewedProducts = (function () {
         var blankDivElement = document.createElement("div");
         blankDivElement.innerHTML = content;
 
+        var newContent = blankDivElement.querySelector(
+          '[data-section-type="wizaah-recently-viewed-products"] .recentlyviewed__container'
+        ).innerHTML;
+
         _this.container.querySelector(".recentlyviewed__container").innerHTML =
-          blankDivElement.querySelector(
-            '[data-section-type="wizaah-recently-viewed-products"] .recentlyviewed__container'
-          ).innerHTML;
+          newContent;
+
+        // Check if newContent contains products, hide or show the heading accordingly
+        _this.toggleHeadingVisibility(newContent.trim() !== "");
+
         _this.container.parentNode.style.display = "block";
 
         // Initialize the slider after updating content
@@ -118,6 +125,14 @@ wizaah.RecentlyViewedProducts = (function () {
   RecentlyViewedProducts.prototype.initSlider = function () {
     // INITIALIZE THE SLIDER HERE
     // PARENT ELEMENT IS :: .mm-recentlyviewed__products
+  };
+
+  // Method to toggle the visibility of the heading
+  RecentlyViewedProducts.prototype.toggleHeadingVisibility = function (show) {
+    var heading = this.container.querySelector(".search-heading");
+    if (heading) {
+      heading.style.display = show ? "block" : "none";
+    }
   };
 
   // Return the RecentlyViewedProducts constructor
