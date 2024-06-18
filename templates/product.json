@@ -91,11 +91,8 @@
       "block_order": [
         "vendor",
         "title",
-<<<<<<< HEAD
-        "judge_me_reviews_preview_badge_k9QFrW",
-=======
         "judge_me_reviews_preview_badge_pWfaUc",
->>>>>>> 8a9a204211f1a1b589188eb77ab42942aae9dee4
+
         "price",
         "variant_picker",
         "quantity_selector",
