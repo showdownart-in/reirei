@@ -1359,3 +1359,25 @@ class AccountIcon extends HTMLElement {
 }
 
 customElements.define('account-icon', AccountIcon);
+
+// Function to add class after scrolling 100px
+function addClassOnScroll() {
+    // Get the header__inline-menu element
+    const headerInlineMenu = document.querySelector('.header__inline-menu');
+
+    // Function to check scroll position and add class
+    function checkScroll() {
+        if (window.scrollY > 100) {
+            headerInlineMenu.classList.add('new-class'); // Replace 'new-class' with the desired class name
+        } else {
+            headerInlineMenu.classList.remove('new-class'); // Optionally, remove the class when scrolling up
+        }
+    }
+
+    // Add scroll event listener to window
+    window.addEventListener('scroll', checkScroll);
+}
+
+// Run the function after DOM content is fully loaded
+document.addEventListener('DOMContentLoaded', addClassOnScroll);
+
