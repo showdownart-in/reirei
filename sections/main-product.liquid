@@ -41,6 +41,9 @@
     <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
 
+    <script src="{{ 'carousel.js' | asset_url }}" defer="defer"></script>
+ 
+
   {% if section.settings.image_zoom == 'hover' %}
     <script id="EnableZoomOnHover-main" src="{{ 'magnify.js' | asset_url }}" defer="defer"></script>
   {% endif %}
@@ -71,7 +74,11 @@
   <div class="page-width">
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
+        {% if section.settings.gallery_layout contains 'splide_slider' %}
+        {% render 'mm-product-media-gallery', variant_images: variant_images, card_product: product  %}
+      {% else %}
         {% render 'product-media-gallery', variant_images: variant_images %}
+      {% endif %}
       </div>
       <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <product-info
@@ -808,11 +815,15 @@
         </div>
       </modal-dialog>
     {%- endfor -%}
+      {%- if product.media.size > 0 and section.settings.gallery_layout != 'splide_slider' -%}
+    <script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'media-gallery.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
 
-    {%- if product.media.size > 0 -%}
+    {% comment %} {%- if product.media.size > 0 -%}
       <script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>
       <script src="{{ 'media-gallery.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
+    {%- endif -%} {% endcomment %}
 
     {%- if first_3d_model -%}
       <script type="application/json" id="ProductJSON-{{ product.id }}">
@@ -2161,7 +2172,15 @@
         {
           "value": "thumbnail_slider",
           "label": "t:sections.main-product.settings.gallery_layout.options__4.label"
-        }
+        },
+        {
+            "value": "splide_slider",
+            "label": "Splide carousel (Skeleton)"
+          },
+          {
+            "value": "splide_slider_vertical_thumbnails",
+            "label": "Splide carousel + vertical thumbnails (Skeleton)"
+          }
       ],
       "default": "stacked",
       "label": "t:sections.main-product.settings.gallery_layout.label"

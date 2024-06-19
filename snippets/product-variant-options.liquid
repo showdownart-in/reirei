@@ -118,23 +118,17 @@
           class="disabled"
         {% endif %}
       > 
-       {% if option.name == 'Färg' %}
-       
-         <label for="{{ input_id }}">
-          {% render 'picture',
-            mobileSrc:variant.featured_image,
-            desktopSrc:variant.featured_image,
-          %} 
-            {{ variant }}
-      </label>
-     
-      {% else %}
-       <label for="{{ input_id }}">
+           {% if option.name == 'Färg' or option.name == 'Color' or option.name == 'Farve' %}
+      <label
+        for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+        style="background-image: url({{ product.variants[forloop.index0].image | img_url: '' }});height:50px;width:50px;background-size: cover;"
+      ></label>
+    {% else %}
+      <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
         {{ value -}}
+        <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
       </label>
-
-       
-        {%  endif %}
+    {% endif %}
      
   {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
     <option
