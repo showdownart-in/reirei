@@ -26,8 +26,7 @@
 /* brand section  */
 
 .collection-image {
-  width: 100%;
-  height: 281px;
+  aspect-ratio: 1.51;
   filter: brightness(0.8);
 }
 .collection-image img {
