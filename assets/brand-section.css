@@ -27,7 +27,6 @@
 
 .collection-image {
   aspect-ratio: 1.51;
-  filter: brightness(0.8);
 }
 .collection-image img {
   width: 100%;

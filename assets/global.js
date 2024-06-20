@@ -1392,7 +1392,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   let rootMargin = "";
-  if (window.innerWidth >= 768) {
+  if (window.innerWidth >= 990) {
     // Assuming 768px as the breakpoint for desktop
     rootMargin = "-42px 0px 0px 0px";
   }

@@ -106,18 +106,25 @@
                   </a>
                 </div>
                 {% when 'product_bundle' %}
-                  {% comment %} {% assign bundle_products = product.metafields.custom.bundle_product.value %}
+                   {% assign bundle_products = product.metafields.custom.bundle_product.value %}
+                   {%if bundle_products != blank %}
                     <product-bundle>
                       <div class="mm-bundle-product-wrapper">     
                       {% for bundle_product in bundle_products %} 
                         <div class="mm-bundle-product">
-                          <img src="{{ bundle_product.featured_image | img_url:"master" }}" loading="lazy" height="100%" width="100%">
+                          <div class="image-meta-container">
+                           {% render 'picture',
+                              class: '',
+                              mobileSrc: bundle_product.featured_image,
+                              desktopSrc: bundle_product.featured_image
+                            %}
+                            </div>
                           <div>{{  bundle_product.title  }}</div>
-                          <input type="checkbox" id="mm_bundle" name="{{ bundle_product.selected_or_first_available_variant.id }}">
                         </div>
                       {% endfor %}
                       </div> 
-                    </product-bundle>  {% endcomment %}
+                    </product-bundle> 
+                  {% endif %}
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',

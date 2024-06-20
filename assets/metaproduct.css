@@ -9,3 +9,17 @@
 .metafield-rich_text_field p strong{
     font-size: 24px;
 }
+.image-meta-container img{
+    height: 100%;
+    width: 100%;
+}
+.image-meta-container{
+    height: 100px;
+    width: 100px;
+
+}
+.mm-bundle-product{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}

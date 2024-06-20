@@ -3510,16 +3510,23 @@ a.hulk-sidebar-widget.heart-wishlist-animation{
 
 }
 
-@media screen and (min-width:750px){
+@media screen and (min-width:901px){
   .second-btn{
   position: fixed;
-  top: 0;
+  bottom: 3px;
   width: 100%;
   background: #fff;
+  z-index: 11;
+}
+.second-btn .product-form__buttons{
+  width: 29%;
+}
+.second-btn .product-form{
+  margin: 0 !important;
 }
 
 }
-@media screen and (max-width:749px){
+@media screen and (max-width:990px){
   .second-btn{
     bottom: 5px;
     top: none;
