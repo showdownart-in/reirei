@@ -1381,3 +1381,41 @@ function addClassOnScroll() {
 // Run the function after DOM content is fully loaded
 document.addEventListener('DOMContentLoaded', addClassOnScroll);
 
+//// sticky add to cart 
+document.addEventListener("DOMContentLoaded", function () {
+  const mainButton = document.querySelector(".main-button");
+  const secondButton = document.querySelector(".second-btn");
+
+  if (!mainButton || !secondButton) {
+    console.error("Button elements not found.");
+    return;
+  }
+
+  let rootMargin = "";
+  if (window.innerWidth >= 768) {
+    // Assuming 768px as the breakpoint for desktop
+    rootMargin = "-42px 0px 0px 0px";
+  }
+
+  const observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Main button is in the viewport
+          secondButton.style.display = "none";
+          secondButton.classList.remove("fixed");
+        } else {
+          // Main button is out of the viewport
+          secondButton.style.display = "block";
+          secondButton.classList.add("fixed");
+        }
+      });
+    },
+    {
+      rootMargin: rootMargin,
+    }
+  );
+
+  // Observe the 'main-button' element
+  observer.observe(mainButton);
+});

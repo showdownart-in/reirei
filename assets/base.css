@@ -3231,12 +3231,12 @@ details-disclosure > details {
     }
   }
 
-  .scroll-trigger.animate--fade-in,
+  /* .scroll-trigger.animate--fade-in,
   .scroll-trigger.animate--slide-in {
     opacity: 0.01;
-  }
+  } */
 
-  .scroll-trigger.animate--slide-in {
+  /* .scroll-trigger.animate--slide-in {
     transform: translateY(2rem);
   }
 
@@ -3248,7 +3248,7 @@ details-disclosure > details {
   .scroll-trigger:not(.scroll-trigger--offscreen).animate--slide-in {
     animation: var(--animation-slide-in);
     animation-delay: calc(var(--animation-order) * 75ms);
-  }
+  } */
 
   .scroll-trigger.scroll-trigger--design-mode.animate--fade-in,
   .scroll-trigger.scroll-trigger--design-mode.animate--slide-in,
@@ -3504,4 +3504,42 @@ a.hulk-sidebar-widget.heart-wishlist-animation{
   position: fixed;
   top: -1px;
   transition: top 0.5s ease;
+}
+.product-form__buttons .fixed{
+  position: fixed;
+
+}
+
+@media screen and (min-width:750px){
+  .second-btn{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+}
+
+}
+@media screen and (max-width:749px){
+  .second-btn{
+    bottom: 5px;
+    top: none;
+    position: fixed;
+    margin: 0 !important;
+    width: 100%;
+    background: #fff;
+    z-index: 11;
+    left: 0;
+    padding: 10px 0;
+}
+.second-btn .product-form{
+  margin: 0 !important;
+}
+.second-btn .product-form__buttons{
+  width: 92%;
+}
+ .second-btn .form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
 }

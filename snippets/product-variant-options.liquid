@@ -118,7 +118,7 @@
           class="disabled"
         {% endif %}
       > 
-           {% if option.name == 'Färg' or option.name == 'Color' or option.name == 'Farve' %}
+   {% if option.name == 'Färg' or option.name == 'Color' or option.name == 'Farve' %}
       <label
         for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
         style="background-image: url({{ product.variants[forloop.index0].image | img_url: '' }});height:50px;width:50px;background-size: cover;"
