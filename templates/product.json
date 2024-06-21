@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "main": {
@@ -86,8 +95,13 @@
             "button_link": ""
           }
         },
-        "judge_me_reviews_preview_badge_HEYxT7": {
+        "judge_me_reviews_preview_badge_miJxbg": {
           "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        },
+        "judge_me_reviews_review_widget_ckGM7w": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
           }
         }
@@ -107,7 +121,8 @@
         "usestab_A3MyhB",
         "shipping_tab_MHtVRt",
         "information_kCkKDF",
-        "judge_me_reviews_preview_badge_HEYxT7"
+        "judge_me_reviews_preview_badge_miJxbg",
+        "judge_me_reviews_review_widget_ckGM7w"
       ],
       "settings": {
         "enable_sticky_info": true,
