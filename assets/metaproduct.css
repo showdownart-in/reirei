@@ -31,7 +31,20 @@
 .related-product-wrapper{
     display: flex;
     flex-wrap: wrap;
+    gap: 2px;
 }
-.related-product input[type=radio]:checked+ .image-meta-container{
+.related-product input[type=radio]:checked+ .image-meta-container-1{
     border: 1px solid black;
+}
+.image-meta-container-1{
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+
+}
+.image-meta-container-1 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
