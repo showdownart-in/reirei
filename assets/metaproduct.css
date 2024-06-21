@@ -23,3 +23,15 @@
     align-items: center;
     gap: 3px;
 }
+
+
+
+/* styleing for product variant options  */
+
+.related-product-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+.related-product input[type=radio]:checked+ .image-meta-container{
+    border: 1px solid black;
+}

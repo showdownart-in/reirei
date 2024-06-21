@@ -16,20 +16,19 @@
     picker_type: picker_type
   %}
 {% endcomment %}
+{{ 'metaproduct.css' | asset_url | stylesheet_tag }}
 {%- liquid
   assign variants_available_arr = product.variants | map: 'available'
   assign variants_option1_arr = product.variants | map: 'option1'
   assign variants_option2_arr = product.variants | map: 'option2'
   assign variants_option3_arr = product.variants | map: 'option3'
-  
 
   assign product_form_id = 'product-form-' | append: section.id
 -%}
 
-
 {%- for value in option.values -%}
   {% for variant in product.variants %}
-  {% assign variant = product.variants %}
+    {% assign variant = product.variants %}
   {% endfor %}
   {%- liquid
     assign option_disabled = true
@@ -103,33 +102,61 @@
       help_text: help_text
     %}
   {%- elsif picker_type == 'button' -%}
- 
+    <input
+      type="radio"
+      id="{{ input_id }}"
+      name="{{ option.name }}"
+      value="{{ value | escape }}"
+      form="{{ product_form_id }}"
+      {% if option.selected_value == value %}
+        checked
+      {% endif %}
+      {% if option_disabled %}
+        class="disabled"
+      {% endif %}
+    >
+    {% if option.name == 'Färg' or option.name == 'Color' or option.name == 'Farve' %}
+      {% assign bundle_products = product.metafields.custom.linked_products.value %}
+      {% if bundle_products != blank %}
+        <div class="related-product-wrapper">
+          {% for bundle_product in bundle_products %}
+            {% assign color_variant = null %}
+            {% if option.name == 'Färg' or option.name == 'Color' or option.name == 'Farve' %}
+              {% assign color_variant = variant %}
 
-      <input
-        type="radio"
-        id="{{ input_id }}"
-        name="{{ option.name }}"
-        value="{{ value | escape }}"
-        form="{{ product_form_id }}"
-        {% if option.selected_value == value %}
-          checked
-        {% endif %}
-        {% if option_disabled %}
-          class="disabled"
-        {% endif %}
-      > 
-   {% if option.name == 'Färg' or option.name == 'Color' or option.name == 'Farve' %}
-      <label
-        for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-        style="background-image: url({{ product.variants[forloop.index0].image | img_url: '' }});height:50px;width:50px;background-size: cover;"
-      ></label>
-    {% else %}
-      <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-        {{ value -}}
-        <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
-      </label>
+              {% if color_variant %}
+                <div class="related-product">
+                  <input
+                    type="radio"
+                    id="{{ input_id }}"
+                    name="{{ option.name }}"
+                    value="{{ value | escape }}"
+                    form="{{ product_form_id }}"
+                    {% if bundle_product.url == product.url %}
+                      checked
+                    {% endif %}
+                    {% if option_disabled %}
+                      class="disabled"
+                    {% endif %}
+                  >
+                  <div class="image-meta-container">
+                    <a href="{{ bundle_product.url }}">
+                      {%
+                        render 'picture',
+                        class: '',
+                        mobileSrc: bundle_product.featured_image | default: bundle_product.featured_image,
+                        desktopSrc: bundle_product.featured_image| default: bundle_product.featured_image
+                      %}
+                    </a>
+                  </div>
+                </div>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
     {% endif %}
-     
+
   {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
     <option
       value="{{ value | escape }}"
