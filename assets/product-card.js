@@ -13,20 +13,44 @@ if (!customElements.get("product-cart-element")) {
       const buyButtons = this.querySelectorAll(".custom-buy-btn");
       buyButtons.forEach((button) => {
         button.addEventListener("click", (event) => {
+          // Show the loading spinner
+          this.showLoadingSpinner(true);
+
+          // Hide the "Add to cart" text
+          this.toggleAddToCartText(false);
+
           // Add the product to the cart with the current quantity
           this.addToCart(this.currentVariant.id, currentValue);
         });
       });
     }
 
+    showLoadingSpinner(show) {
+      const spinner = this.querySelector(".loading__spinner");
+      if (show) {
+        spinner.classList.remove("hidden");
+      } else {
+        spinner.classList.add("hidden");
+      }
+    }
+
+    toggleAddToCartText(show) {
+      const addToCartText = this.querySelector(".add-text");
+      if (show) {
+        addToCartText.style.display = "inline";
+      } else {
+        addToCartText.style.display = "none";
+      }
+    }
+
     showAddToCartSuccess() {
       const successDiv = document.querySelector(".add-to-card-sucess");
-       successDiv.classList.add("show");
+      successDiv.classList.add("show");
 
-       // Hide the success message after 3 seconds
-       setTimeout(() => {
-         successDiv.classList.remove("show");
-       }, 3000);
+      // Hide the success message after 3 seconds
+      setTimeout(() => {
+        successDiv.classList.remove("show");
+      }, 3000);
     }
 
     addToCart(productId, quantity) {
@@ -68,10 +92,22 @@ if (!customElements.get("product-cart-element")) {
 
           // Show the success message
           this.showAddToCartSuccess();
+
+          // Hide the loading spinner
+          this.showLoadingSpinner(false);
+
+          // Show the "Add to cart" text
+          this.toggleAddToCartText(true);
         })
         .catch((error) => {
           console.error("Error adding to cart:", error);
           // Handle the error or show an error message to the user
+
+          // Hide the loading spinner
+          this.showLoadingSpinner(false);
+
+          // Show the "Add to cart" text in case of error
+          this.toggleAddToCartText(true);
         });
     }
 

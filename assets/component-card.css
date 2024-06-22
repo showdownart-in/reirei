@@ -593,3 +593,25 @@
     clip-path: polygon(var(--shape--blob-5));
   }
 }
+.collection-content{
+    position: absolute;
+    bottom: 22px;
+    width: 100%;
+    z-index: 0;
+    height: fit-content;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.collection-card-info{
+  width: 90%;
+  background: #b8dcc2;
+  color: #000;
+  padding: .5rem;
+  border-radius: 2rem;
+}
+.main-collection-main-page{
+  margin:3rem 0;
+
+}
