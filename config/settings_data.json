@@ -158,6 +158,12 @@
         "disabled": false,
         "settings": {
         }
+      },
+      "language-translate": {
+        "type": "shopify:\/\/apps\/language-translate-by-uplinkly\/blocks\/language-translate\/56a854bb-67ff-48c6-ba58-9185b4505de7",
+        "disabled": true,
+        "settings": {
+        }
       }
     },
     "color_schemes": {
