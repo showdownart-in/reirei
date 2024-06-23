@@ -164,6 +164,12 @@
         "disabled": false,
         "settings": {
         }
+      },
+      "6544682535036668446": {
+        "type": "shopify:\/\/apps\/pumper-bundle-qty\/blocks\/app-embed\/0856870d-2aca-4b1e-a662-cf1797f61270",
+        "disabled": false,
+        "settings": {
+        }
       }
     },
     "color_schemes": {
