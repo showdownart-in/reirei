@@ -29,6 +29,11 @@
           "settings": {
           }
         },
+        "mw_product_bundles_bundle_product_app_block_Fz33UU": {
+          "type": "shopify:\/\/apps\/mw-product-bundles\/blocks\/bundle-product-app-block\/5bcb1a6d-53b5-4d9c-b4f9-19f6620da62b",
+          "settings": {
+          }
+        },
         "price": {
           "type": "price",
           "settings": {
@@ -110,6 +115,7 @@
         "vendor",
         "title",
         "judge_me_reviews_preview_badge_pWfaUc",
+        "mw_product_bundles_bundle_product_app_block_Fz33UU",
         "price",
         "product_bundle_6BzQRn",
         "variant_picker",
@@ -163,11 +169,28 @@
       "settings": {
         "title": "Recently viewed"
       }
+    },
+    "17191691697ea748dd": {
+      "type": "apps",
+      "blocks": {
+        "mw_product_bundles_bundle_product_app_block_aatcrC": {
+          "type": "shopify:\/\/apps\/mw-product-bundles\/blocks\/bundle-product-app-block\/5bcb1a6d-53b5-4d9c-b4f9-19f6620da62b",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "mw_product_bundles_bundle_product_app_block_aatcrC"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "main",
     "related-products",
-    "victory_recently_viewed_products_KtCMHK"
+    "victory_recently_viewed_products_KtCMHK",
+    "17191691697ea748dd"
   ]
 }
