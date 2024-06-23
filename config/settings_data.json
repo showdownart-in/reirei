@@ -170,6 +170,14 @@
         "disabled": false,
         "settings": {
         }
+      },
+      "15909290956780699707": {
+        "type": "shopify:\/\/apps\/mw-product-bundles\/blocks\/app-embed-block\/5bcb1a6d-53b5-4d9c-b4f9-19f6620da62b",
+        "disabled": false,
+        "settings": {
+          "custom_liquid": "",
+          "disable_upsell_crossell_popup": false
+        }
       }
     },
     "color_schemes": {
