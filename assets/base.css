@@ -3550,3 +3550,6 @@ a.hulk-sidebar-widget.heart-wishlist-animation{
   justify-content: center;
  }
 }
+.hamburger-close-btn svg{
+  height: 2rem;
+}

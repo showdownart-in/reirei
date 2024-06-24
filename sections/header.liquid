@@ -194,7 +194,7 @@
         if section.settings.menu_type_desktop == 'dropdown'
           render 'header-dropdown-menu'
         elsif section.settings.menu_type_desktop != 'drawer'
-          render 'header-mega-menu'
+          render 'header-mega-menu' section: section
         endif
       endif
     %}
@@ -653,6 +653,38 @@
   "blocks": [
     {
       "type": "@app"
+    },
+     {
+      "type": "image_blocks",
+      "name": "Mega Menu Image",
+      "settings": [
+        {
+          "type": "text",
+          "id": "mega_menu_handle",
+          "label": "Image for mega menu link",
+          "default": "Categories",
+          "info": "Add the header link title"
+        },
+        {
+          "type": "image_picker",
+          "id": "mega_menu_image",
+          "label": "Select Image, or GIF",
+          "info": "Dimension (345x300)px"
+        },
+        {
+          "type": "url",
+          "id": "mega_menu_image_link",
+          "label": "Image link"
+        },
+        {
+          "type": "text",
+          "id": "Image-text",
+          "label": "Text For Image",
+          "default": "Categories",
+          "info": "Toys"
+
+        }
+      ]
     }
   ]
 }

@@ -31,7 +31,7 @@
                 tabindex="-1"
               >
                 <ul
-                  class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                  class="mega-menu__list {% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
                   role="list"
                 >
                   {%- for childlink in link.links -%}
@@ -67,6 +67,38 @@
                     </li>
                   {%- endfor -%}
                 </ul>
+
+                  <div class="megamenu-images-container">
+                  {%- if section.blocks.size > 0 -%}
+                    {%- assign linktitle = link.title | handleize -%}
+                    {%- for block in section.blocks -%}
+                      {%- if block.type == 'image_blocks' -%}
+                        {%- assign currenttitle = block.settings.mega_menu_handle | handleize -%}
+                        {%- if linktitle == currenttitle -%}
+                          <li>
+                            <a class="mega-menu-image mega-menu__image-wrapper" href="{{  block.settings.mega_menu_image_link }}">
+                              {%- if block.settings.mega_menu_image -%}
+                                {% render "picture", class: "media media--16-9 mega-menu__image", mobileSrc: block.settings.mega_menu_image, desktopSrc: block.settings.mega_menu_image %}
+                              {% elsif block.settings.mega_menu_video %}
+                                  {{
+                                    block.settings.mega_menu_video
+                                    | video_tag:
+                                      image_size: '350px',
+                                      autoplay: true,
+                                      loop: true,
+                                      controls: false,
+                                      muted: true,
+                                      width: '200px'
+                                  }}
+                              {%- endif -%}
+                              <div class="mega-menu-overlay text-body">{{- block.settings.Image-text | escape -}}</div>
+                            </a>
+                          </li>
+                        {%- endif -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  {%- endif -%}
+                </div>
               </div>
             </details>
           </header-menu>
