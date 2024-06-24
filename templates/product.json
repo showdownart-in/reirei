@@ -12,6 +12,12 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "mw_product_bundles_bundle_app_block_hx6VqV": {
+          "type": "shopify:\/\/apps\/mw-product-bundles\/blocks\/bundle-app-block\/5bcb1a6d-53b5-4d9c-b4f9-19f6620da62b",
+          "settings": {
+            "offer_ordinal_number": "0"
+          }
+        },
         "vendor": {
           "type": "text",
           "settings": {
@@ -107,6 +113,7 @@
         }
       },
       "block_order": [
+        "mw_product_bundles_bundle_app_block_hx6VqV",
         "vendor",
         "title",
         "judge_me_reviews_preview_badge_pWfaUc",
