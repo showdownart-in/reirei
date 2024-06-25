@@ -5,12 +5,13 @@
     padding-bottom: .8rem;
 }
 .product-title{
-   color: #212529;
+   color: #000;
    text-decoration: none;
    padding-bottom: .8rem;
    min-height: 4rem;
    display: block;
-   font-size: 12px;
+   font-size: 14px;
+   font-weight:600;
    line-height: 1;
 }
 .productMain_container p{
