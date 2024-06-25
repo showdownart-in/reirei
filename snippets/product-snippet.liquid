@@ -36,7 +36,7 @@
 <div class="price-container">
   <p class="product-price{% if discount_percentage > 50 %} red-price{% endif %}">{{ current_variant.price | money }}</p>
   <s>{{ current_variant.compare_at_price | money }}</s>
-  <div>
+  <div class="price-off">
      {% if current_variant.compare_at_price > current_variant.price %}
           {% assign save_amount = product.compare_at_price | minus: product.price %}
           {% assign discount_percent = save_amount | times: 100.0 | divided_by: product.compare_at_price | round: 0 %}
