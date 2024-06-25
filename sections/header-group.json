@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "name": "t:sections.header.name",
   "type": "header",
@@ -17,7 +26,7 @@
         "announcement-bar-0"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "show_line_separator": true,
         "show_social": false,
         "auto_rotate": false,
@@ -34,7 +43,8 @@
           "settings": {
             "mega_menu_handle": "aeromoov",
             "mega_menu_image": "shopify:\/\/shop_images\/image-7_997c3fe2-11c1-4770-a394-48c25708e856.jpg",
-            "mega_menu_image_link": "shopify:\/\/collections\/aeromoov"
+            "mega_menu_image_link": "shopify:\/\/collections\/aeromoov",
+            "Image-text": "Categories"
           }
         },
         "image_blocks_6x9irA": {
@@ -42,7 +52,8 @@
           "settings": {
             "mega_menu_handle": "aeromoov",
             "mega_menu_image": "shopify:\/\/shop_images\/owlet_84a6e41c-7259-4430-908f-275d11dd2e9b.jpg",
-            "mega_menu_image_link": ""
+            "mega_menu_image_link": "",
+            "Image-text": "Categories"
           }
         }
       },
