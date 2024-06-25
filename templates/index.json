@@ -126,13 +126,9 @@
       "settings": {
         "add_all_collections": [
           "aeromoov",
-          "aerosleep",
-          "babyzen",
           "bumbo",
           "dockatot",
-          "elvie",
-          "frontpage",
-          "null"
+          "elvie"
         ],
         "title": "Shop by Brands",
         "padding_top": 36,
