@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "featured_collection": {
@@ -35,7 +44,7 @@
         "collection_block_Y893tT": {
           "type": "collection_block",
           "settings": {
-            "desktop_image": "shopify:\/\/shop_images\/image-2.jpg",
+            "desktop_image": "shopify:\/\/shop_images\/2406_ZAZU_Campaign_Banner_B2C_Campaign_Page_Swe.jpg",
             "mobile_image": "shopify:\/\/shop_images\/Web_Banner-01.jpg",
             "title": "",
             "link": ""
@@ -44,7 +53,16 @@
         "collection_block_YGgCPd": {
           "type": "collection_block",
           "settings": {
-            "desktop_image": "shopify:\/\/shop_images\/image-1.jpg",
+            "desktop_image": "shopify:\/\/shop_images\/2406_EB_Campaign_Banner_B2C_Campaign_Page_Swe.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/Web_Banner-02.jpg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "collection_block_VEiF47": {
+          "type": "collection_block",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/2406_UB_and_AM_Campaign_Banner_B2C_Campaign_Page_Swe.jpg",
             "mobile_image": "shopify:\/\/shop_images\/Web_Banner-02.jpg",
             "title": "",
             "link": ""
@@ -53,15 +71,34 @@
       },
       "block_order": [
         "collection_block_Y893tT",
-        "collection_block_YGgCPd"
+        "collection_block_YGgCPd",
+        "collection_block_VEiF47"
       ],
       "settings": {
         "full_width": true,
         "mobile_full_width": true,
         "padding_top": 0,
-        "padding_bottom": 36,
+        "padding_bottom": 0,
         "image_background": "",
         "image_flow": false
+      }
+    },
+    "brand_buttons_BJekEr": {
+      "type": "brand-buttons",
+      "settings": {
+        "add_all_collections": [
+          "aeromoov",
+          "aerosleep",
+          "babyzen",
+          "bumbo",
+          "dockatot",
+          "elvie",
+          "null",
+          "owlet"
+        ],
+        "title": "Top Categories",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "product_card_Gd3fzj": {
@@ -89,15 +126,57 @@
       "settings": {
         "add_all_collections": [
           "aeromoov",
-          "aerosleep",
-          "babyzen",
           "bumbo",
           "dockatot",
-          "elvie",
-          "frontpage",
-          "null"
+          "elvie"
         ],
-        "title": "Popular Brands",
+        "title": "Shop by Brands",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multirow_69wRLg": {
+      "type": "multirow",
+      "blocks": {
+        "row_UiTczm": {
+          "type": "row",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Desktop-940x530-Cam01.webp",
+            "caption": "OWLET",
+            "heading": "Cam 2 Sleepy Sage",
+            "text": "<p>Owlet Cam 2 records videos when sound, movement or crying is recorded in your child's room. The video clips give you an opportunity to see your child's subtle signals before it starts to cry.<\/p>",
+            "button_label": "Buy Now",
+            "button_link": ""
+          }
+        },
+        "row_6EKLPq": {
+          "type": "row",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/evolve-bouncer-sage-green-mesh-carousel-1g.jpg",
+            "caption": "ERGOBABY",
+            "heading": "Omni Breeze Pearl Grey",
+            "text": "<p>Award-winning Omni Breeze is Ergobaby's coolest carrier, the ultimate all-in-one carrier in the SoftFlex ™ mesh material with a high air flow so you and your child are comfortable and cool all day. <\/p>",
+            "button_label": "Buy Now",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_UiTczm",
+        "row_6EKLPq"
+      ],
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "image_layout": "alternate-left",
+        "section_color_scheme": "scheme-1",
+        "row_color_scheme": "scheme-1",
+        "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -108,17 +187,17 @@
         "column_6XeA6N": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/glass-2.webp",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "Shop Now",
+            "image": "shopify:\/\/shop_images\/Owlet_demo1-ezgif.com-video-to-gif-converter.gif",
+            "title": "",
+            "text": "",
+            "link_label": "",
             "link": ""
           }
         },
         "column_JGVEt8": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/glass.webp",
+            "image": "shopify:\/\/shop_images\/1701-CIR-JKE_1-4.webp",
             "title": "Column",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
             "link_label": "Shop Now",
@@ -130,6 +209,7 @@
         "column_6XeA6N",
         "column_JGVEt8"
       ],
+      "disabled": true,
       "settings": {
         "title": "Column Heading",
         "heading_size": "h2",
@@ -147,28 +227,10 @@
         "padding_bottom": 36
       }
     },
-    "brand_buttons_BJekEr": {
-      "type": "brand-buttons",
-      "settings": {
-        "add_all_collections": [
-          "aeromoov",
-          "aerosleep",
-          "babyzen",
-          "bumbo",
-          "dockatot",
-          "elvie",
-          "null",
-          "owlet"
-        ],
-        "title": "Next With Popular Brands",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "featured_collection_HcJkgF": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured collection",
+        "title": "Top Trending Product",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
@@ -220,6 +282,7 @@
         "featured_collection_hGK3WA",
         "featured_collection_7kyFBN"
       ],
+      "disabled": true,
       "settings": {
         "title": "Collections",
         "heading_size": "h1",
@@ -277,10 +340,11 @@
   "order": [
     "featured_collection",
     "slider_xWUAPn",
+    "brand_buttons_BJekEr",
     "product_card_Gd3fzj",
     "brand_section_K8PGUT",
+    "multirow_69wRLg",
     "multicolumn_FcBhQC",
-    "brand_buttons_BJekEr",
     "featured_collection_HcJkgF",
     "collection_list_mr6hGJ",
     "collage_bDUQcG"
