@@ -95,6 +95,10 @@ cursor: not-allowed;
     height: auto;
     width: 100%;
 }
+.price-off{
+  position:absolute;
+  top:0;
+}
 @media screen and (max-width:749px){
    .price-container{
     flex-direction: column;
@@ -110,3 +114,4 @@ cursor: not-allowed;
 .cart-and-whishlist:hover {
     border: 2px solid black;
 }
+
