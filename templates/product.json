@@ -19,11 +19,6 @@
             "text_style": "uppercase"
           }
         },
-        "notify_me_back_in_stock_alerts_app_block_bwxgwP": {
-          "type": "shopify:\/\/apps\/notify-me-back-in-stock-alerts\/blocks\/app-block\/efd73fb9-4943-460f-9877-08a22c111961",
-          "settings": {
-          }
-        },
         "title": {
           "type": "title",
           "settings": {
@@ -36,6 +31,11 @@
         },
         "price": {
           "type": "price",
+          "settings": {
+          }
+        },
+        "notify_me_back_in_stock_alerts_app_block_bwxgwP": {
+          "type": "shopify:\/\/apps\/notify-me-back-in-stock-alerts\/blocks\/app-block\/efd73fb9-4943-460f-9877-08a22c111961",
           "settings": {
           }
         },
@@ -118,10 +118,10 @@
       },
       "block_order": [
         "vendor",
-        "notify_me_back_in_stock_alerts_app_block_bwxgwP",
         "title",
         "judge_me_reviews_preview_badge_pWfaUc",
         "price",
+        "notify_me_back_in_stock_alerts_app_block_bwxgwP",
         "product_bundle_6BzQRn",
         "variant_picker",
         "quantity_selector",
