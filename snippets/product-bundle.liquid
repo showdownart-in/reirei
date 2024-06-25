@@ -1,0 +1,164 @@
+<product-bundle
+  class="product-bundle"
+  data-section-id="{{ sectionId }}"
+  data-product-url="{{ product.url }}"
+>
+  <div class="mm-bundle-product-wrapper">
+    {% for bundle_product in bundle_products %}
+      <div class="mm-bundle-product" data-product-id="{{ bundle_product.id }}">
+        <div class="image-meta-container">
+          <img class="product-image" src="{{ bundle_product.featured_image | img_url: '300x300' }}" alt="{{ bundle_product.title }}">
+        </div>
+        <div class="product-title">{{ bundle_product.title }}</div>
+
+        {% if bundle_product.variants.size >= 1 %}
+          <select name="product-variant" class="product-variant-select">
+            {% for variant in bundle_product.variants %}
+  <option value="{{ variant.id }}" 
+          data-price="{{ variant.price | money_without_currency }}" 
+          data-formatted-price="{{ variant.price | money }}"
+          data-image="{{ variant.featured_image | img_url: '300x300' }}">
+    {{ variant.title }} - {{ variant.price | money }}
+  </option>
+{% endfor %}
+          </select>
+        {% else %}
+          <div class="single-variant">
+            {{ bundle_product.variants.first.title }} - {{ bundle_product.variants.first.price | money }}
+          </div>
+          <input type="hidden" name="product-variant" value="{{ bundle_product.variants.first.id }}">
+        {% endif %}
+        <div class="product-price">{{ bundle_product.variants.first.price | money }}</div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="total-price"></div>
+  <button class="add-to-cart">Add to Cart</button>
+
+  <script type="application/json" id="ProductJson-{{ sectionId }}">
+    {{ bundle_products | json }}
+  </script>
+</product-bundle>
+<script>
+class ProductBundle extends HTMLElement {
+  constructor() {
+    super();
+    this.bundleProducts = this.querySelectorAll('.mm-bundle-product');
+    this.variantSelects = this.querySelectorAll('.product-variant-select');
+    this.addToCartButton = this.querySelector('.add-to-cart');
+    this.totalPriceElement = this.querySelector('.total-price');
+
+    this.bindEvents();
+    this.updateTotalPrice();
+  }
+
+  bindEvents() {
+    this.variantSelects.forEach(select => {
+      select.addEventListener('change', this.handleVariantChange.bind(this));
+    });
+
+    this.addToCartButton.addEventListener('click', this.handleAddToCart.bind(this));
+  }
+
+  handleVariantChange(event) {
+    const select = event.target;
+    const productContainer = select.closest('.mm-bundle-product');
+    const selectedOption = select.options[select.selectedIndex];
+    const price = parseFloat(selectedOption.dataset.price); // Use dataset.price for raw numeric value
+    const imageUrl = selectedOption.dataset.image;
+
+    // Update price
+    productContainer.querySelector('.product-price').textContent = selectedOption.textContent;
+
+    // Update image
+    productContainer.querySelector('.product-image').src = imageUrl;
+
+    this.updateTotalPrice();
+  }
+
+  updateTotalPrice() {
+    let total = 0;
+
+    this.bundleProducts.forEach(product => {
+      const priceElement = product.querySelector('.product-price');
+      const priceText = priceElement.textContent.trim().replace(/[^\d]/g, '');
+      let price = parseInt(priceText, 10);
+       price = Math.floor(price / 100);
+
+      console.log(price); 
+
+      if (!isNaN(price)) { // Check if price is valid number
+        total += price;
+      }
+    });
+
+    // Update total price element
+    this.totalPriceElement.textContent = `Total: ${total.toFixed(2)}`; // Format total to 2 decimal places
+  }
+
+  handleAddToCart() {
+    const selectedVariants = [];
+
+    this.bundleProducts.forEach(productElement => {
+      const selectElement = productElement.querySelector('.product-variant-select');
+      const variantId = selectElement ? selectElement.value : productElement.querySelector('input[name="product-variant"]').value;
+
+      selectedVariants.push({
+        id: variantId,
+        quantity: 1
+      });
+    });
+
+    const formData = {
+      items: selectedVariants
+    };
+
+    fetch(window.Shopify.routes.root + 'cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        console.log('added to cart')
+        updateCartIconBubble() 
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+ 
+}
+ function updateCartIconBubble() {
+  fetch(window.Shopify.routes.root + 'cart.js')
+    .then(response => response.json())
+    .then(cartData => {
+        let cartIcon = document.querySelector("#cart-icon-bubble");
+      let cartIconBubble = document.querySelector(".cart-count-bubble");
+      if (cartIconBubble) {
+        cartIconBubble.textContent = cartData.item_count; 
+        
+        // Update with actual count from cartData
+      }
+      else{
+        cartIconBubble = document.createElement('div');
+        cartIconBubble.classList.add('cart-count-bubble');
+        cartIconBubble.textContent = cartData.item_count; // Set the count when creating the bubble
+        console.log(cartIcon)
+        cartIcon.appendChild(cartIconBubble);
+
+    }
+      console.log('Cart updated:', cartData);
+    })
+    .catch(error => {
+      console.error('Error fetching cart data:', error);
+    });
+}
+
+customElements.define('product-bundle', ProductBundle);
+
+</script>

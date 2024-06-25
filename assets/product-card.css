@@ -100,4 +100,12 @@ cursor: not-allowed;
     gap: 0;
    }
 }
-
+.productMain_container{
+    position: relative;
+}
+.add-text{
+    color: #000;
+}
+.cart-and-whishlist:hover {
+    border: 2px solid black;
+}

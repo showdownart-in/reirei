@@ -99,3 +99,9 @@
   text-transform: uppercase;
   color: rgba(var(--color-foreground), 0.7);
 }
+.discount-badge{
+padding: 0 10px;
+background: black;
+ border-radius: 20px;
+ color: white;
+}

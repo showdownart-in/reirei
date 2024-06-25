@@ -106,23 +106,8 @@
                 {% when 'product_bundle' %}
                    {% assign bundle_products = product.metafields.custom.bundle_product.value %}
                    {%if bundle_products != blank %}
-                    <product-bundle>
-                      <div class="mm-bundle-product-wrapper">     
-                      {% for bundle_product in bundle_products %} 
-                        <div class="mm-bundle-product">
-                          <div class="image-meta-container">
-                           {% render 'picture',
-                              class: '',
-                              mobileSrc: bundle_product.featured_image,
-                              desktopSrc: bundle_product.featured_image
-                            %}
-                            </div>
-                          <div>{{  bundle_product.title  }}</div>
-                        </div>
-                      {% endfor %}
-                      </div> 
-                    </product-bundle> 
-                  {% endif %}
+                    {%render 'product-bundle' bundle_products:bundle_products %}
+                {% endif %}
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -739,6 +724,7 @@
                 </details>
               </div>
             {% when 'details_tab' %}
+              {% if product.description != blank %}
               <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                 <details id="Details-{{ block.id }}-{{ section.id }}">
                   <summary>
@@ -757,7 +743,38 @@
                   </div>
                 </details>
               </div>
+            {% endif %}
+            {% when 'care' %}
+               {% if product.metafields.descriptors.care_guide != blank %}
+              <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
+                <details id="Details-{{ block.id }}-{{ section.id }}">
+                  <summary>
+                    <div class="summary__title">
+                      <h2 class="h4 accordion__title inline-richtext {{ block.id }}-{{ block.settings.vertical_alignment }}">
+                        {% if product.metafields.descriptors.care_guide != blank %}
+                          Care Guide
+
+                        {% endif %}
+                      </h2>
+                    </div>
+                    {% render 'icon-caret' %}
+                  </summary>
+                  <div
+                    class="accordion__content rte {{ forloop.index }}"
+                    id="ProductAccordion-{{ block.id }}-{{ section.id }}"
+                  >
+                    {% if product.metafields.descriptors.care_guide != blank %}
+                      {{ product.metafields.descriptors.care_guide }}
+                     
+                    {% endif %}
+                  </div>
+                </details>
+              </div>
+            {% endif %}
+
+
             {% when 'usestab' %}
+              {% if product.metafields.custom.usetab != blank or product.metafields.custom.otherusetab != blank %}
               <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                 <details id="Details-{{ block.id }}-{{ section.id }}">
                   <summary>
@@ -765,7 +782,8 @@
                       <h2 class="h4 accordion__title inline-richtext {{ block.id }}-{{ block.settings.vertical_alignment }}">
                         {% if product.metafields.custom.usetab != blank %}
                           use
-                        {% else %}
+                        {% endif %}
+                        {% if  product.metafields.custom.otherusetab != blank %}
                           other uses
                         {% endif %}
                       </h2>
@@ -778,12 +796,14 @@
                   >
                     {% if product.metafields.custom.usetab != blank %}
                       {{ product.metafields.custom.usetab | metafield_tag }}
-                    {% else %}
+                    {% endif %}
+                    {% if product.metafields.custom.otherusetab != blank  %}
                       {{ product.metafields.custom.otherusetab | metafield_tag }}
                     {% endif %}
                   </div>
                 </details>
               </div>
+              {% endif %}
            
           {%- endcase -%}
         {% endfor %}
@@ -1159,6 +1179,11 @@
     {
       "type": "usestab",
       "name": "usestab",
+      "settings": []
+    },
+        {
+      "type": "care",
+      "name": "care",
       "settings": []
     },
     {
