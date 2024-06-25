@@ -57,6 +57,7 @@
 }
 .disabled-btn{
     opacity: .5;
+    pointer-events:none;
 }
 .disabled-btn svg{
 cursor: not-allowed;
