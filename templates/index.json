@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "featured_collection": {
@@ -35,7 +44,7 @@
         "collection_block_Y893tT": {
           "type": "collection_block",
           "settings": {
-            "desktop_image": "shopify:\/\/shop_images\/image-2.jpg",
+            "desktop_image": "shopify:\/\/shop_images\/2406_ZAZU_Campaign_Banner_B2C_Campaign_Page_Swe.jpg",
             "mobile_image": "shopify:\/\/shop_images\/Web_Banner-01.jpg",
             "title": "",
             "link": ""
@@ -44,7 +53,16 @@
         "collection_block_YGgCPd": {
           "type": "collection_block",
           "settings": {
-            "desktop_image": "shopify:\/\/shop_images\/image-1.jpg",
+            "desktop_image": "shopify:\/\/shop_images\/2406_EB_Campaign_Banner_B2C_Campaign_Page_Swe.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/Web_Banner-02.jpg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "collection_block_VEiF47": {
+          "type": "collection_block",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/2406_UB_and_AM_Campaign_Banner_B2C_Campaign_Page_Swe.jpg",
             "mobile_image": "shopify:\/\/shop_images\/Web_Banner-02.jpg",
             "title": "",
             "link": ""
@@ -53,7 +71,8 @@
       },
       "block_order": [
         "collection_block_Y893tT",
-        "collection_block_YGgCPd"
+        "collection_block_YGgCPd",
+        "collection_block_VEiF47"
       ],
       "settings": {
         "full_width": true,
@@ -62,6 +81,24 @@
         "padding_bottom": 36,
         "image_background": "",
         "image_flow": false
+      }
+    },
+    "brand_buttons_BJekEr": {
+      "type": "brand-buttons",
+      "settings": {
+        "add_all_collections": [
+          "aeromoov",
+          "aerosleep",
+          "babyzen",
+          "bumbo",
+          "dockatot",
+          "elvie",
+          "null",
+          "owlet"
+        ],
+        "title": "Top Categories",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "product_card_Gd3fzj": {
@@ -143,24 +180,6 @@
         "color_scheme": "scheme-1",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "brand_buttons_BJekEr": {
-      "type": "brand-buttons",
-      "settings": {
-        "add_all_collections": [
-          "aeromoov",
-          "aerosleep",
-          "babyzen",
-          "bumbo",
-          "dockatot",
-          "elvie",
-          "null",
-          "owlet"
-        ],
-        "title": "Next With Popular Brands",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -277,10 +296,10 @@
   "order": [
     "featured_collection",
     "slider_xWUAPn",
+    "brand_buttons_BJekEr",
     "product_card_Gd3fzj",
     "brand_section_K8PGUT",
     "multicolumn_FcBhQC",
-    "brand_buttons_BJekEr",
     "featured_collection_HcJkgF",
     "collection_list_mr6hGJ",
     "collage_bDUQcG"
