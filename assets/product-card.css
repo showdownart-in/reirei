@@ -52,6 +52,7 @@
 }
 .productMain_container{
     border-bottom: 1.5px solid #ebebeb;
+    padding-bottom:1.4rem;
 }
 .red-price{
     color: red;
