@@ -76,6 +76,8 @@ cursor: not-allowed;
     text-align: center;
     height: 4.5rem;
     position: relative;
+    width:70%;
+    margin:0 auto;
 }
 .icon-wishlist-heart-empty{
     font-size: 24px;
