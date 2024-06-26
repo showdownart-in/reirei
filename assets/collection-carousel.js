@@ -4,6 +4,7 @@ class SplideCarousel extends HTMLElement {
 
     this.id = this.getAttribute("id");
     this.perPageDesktop = this.dataset.desktopPerPage;
+    this.perPageTablet = this.dataset.tabPerPage;
     this.perpageMobile = this.dataset.mobilePerPage;
     this.desktopgap = this.dataset.desktopgap || 15;
     this.gapValue = this.dataset.gap;
@@ -18,6 +19,7 @@ class SplideCarousel extends HTMLElement {
     this.desktopPaddingRight = this.dataset.desktoppaddingright;
     this.autoplay = this.dataset.autoplay === "true" ? true : false;
   }
+
   connectedCallback() {
     new Splide(`#${this.id}`, {
       type: "slide",
@@ -41,6 +43,16 @@ class SplideCarousel extends HTMLElement {
         page: "splide__pagination__page ibc_page",
       },
       breakpoints: {
+        990: {
+          perPage: this.perPageTablet,
+          gap: `${this.tabGap}px`, // Assuming tabGap should be used for this breakpoint
+          arrows: this.arrowDesktop, // Adjust as needed
+          pagination: true, // Adjust as needed
+          padding: {
+            left: this.desktopPaddingLeft,
+            right: this.desktopPaddingRight,
+          },
+        },
         749: {
           type: "slide",
           perPage: this.perpageMobile,

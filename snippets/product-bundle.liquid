@@ -4,12 +4,17 @@
   data-product-url="{{ product.url }}"
 >
   <div class="mm-bundle-product-wrapper">
+    <div class="total-price"></div>
     {% for bundle_product in bundle_products %}
-      <div class="mm-bundle-product" data-product-id="{{ bundle_product.id }}">
+      <div class="mm-bundle-product bundle" data-product-id="{{ bundle_product.id }}">
+        
+        <div class="product-bundle-image-text">
         <div class="image-meta-container">
+          
           <img class="product-image" src="{{ bundle_product.featured_image | img_url: '300x300' }}" alt="{{ bundle_product.title }}">
         </div>
-        <div class="product-title">{{ bundle_product.title }}</div>
+        <div class="bundle-product-title">{{ bundle_product.title }}</div>
+        </div>
 
         {% if bundle_product.variants.size >= 1 %}
           <select name="product-variant" class="product-variant-select">
@@ -28,13 +33,22 @@
           </div>
           <input type="hidden" name="product-variant" value="{{ bundle_product.variants.first.id }}">
         {% endif %}
-        <div class="product-price">{{ bundle_product.variants.first.price | money }}</div>
+        <div class="product-price bundle-price">{{ bundle_product.variants.first.price | money }}</div>
       </div>
     {% endfor %}
   </div>
 
-  <div class="total-price"></div>
-  <button class="add-to-cart">Add to Cart</button>
+  <div>
+  <div class="add-tocart-container">
+  <button class="add-to-cart bundle-add-to-cart">Add to Cart</button>
+    <div class="loading__spinner my-spinner hidden bundle-spinner">
+     <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+       <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+      </svg>
+     </div>
+  </div>
+ 
+    </div>
 
   <script type="application/json" id="ProductJson-{{ sectionId }}">
     {{ bundle_products | json }}
@@ -51,6 +65,15 @@ class ProductBundle extends HTMLElement {
 
     this.bindEvents();
     this.updateTotalPrice();
+     const buyButtons = this.querySelectorAll(".bundle-add-to-cart");
+      buyButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          // Show the loading spinner
+          this.showLoadingSpinner(true);
+           this.toggleAddToCartText(false);
+
+        });
+      });
   }
 
   bindEvents() {
@@ -76,6 +99,7 @@ class ProductBundle extends HTMLElement {
 
     this.updateTotalPrice();
   }
+ 
 
   updateTotalPrice() {
     let total = 0;
@@ -125,14 +149,49 @@ class ProductBundle extends HTMLElement {
     .then(data => {
 
         console.log('added to cart')
-        updateCartIconBubble() 
+        updateCartIconBubble();
+       this.showLoadingSpinner(false);
+       this.toggleAddToCartText(true);
+       this.showAddToCartSuccess();
+        
+
+
+        
+
     })
     .catch(error => {
       console.error('Error:', error);
     });
   }
+  showLoadingSpinner(show) {
+      const spinner = this.querySelector(".loading__spinner");
+      if (show) {
+        spinner.classList.remove("hidden");
+      } else {
+        spinner.classList.add("hidden");
+      }
+    }
+        showAddToCartSuccess() {
+      const successDiv = document.querySelector(".add-to-card-sucess");
+      successDiv.classList.add("show");
+
+      // Hide the success message after 3 seconds
+      setTimeout(() => {
+        successDiv.classList.remove("show");
+      }, 3000);
+    }
+    
+    toggleAddToCartText(show) {
+      const addToCartText = this.querySelector(".bundle-add-to-cart");
+      if (show) {
+        addToCartText.style.display = "inline";
+      } else {
+        addToCartText.style.display = "none";
+      }
+    }
  
 }
+
  function updateCartIconBubble() {
   fetch(window.Shopify.routes.root + 'cart.js')
     .then(response => response.json())
@@ -158,6 +217,7 @@ class ProductBundle extends HTMLElement {
       console.error('Error fetching cart data:', error);
     });
 }
+   
 
 customElements.define('product-bundle', ProductBundle);
 
