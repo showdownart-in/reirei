@@ -12,18 +12,58 @@
 .image-meta-container img{
     height: 100%;
     width: 100%;
+    object-fit: cover;
 }
 .image-meta-container{
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid black;
 
 }
-.mm-bundle-product{
+.bundle-price{
+    display: none;
+}
+.bundle{
+    padding-bottom: 1.5rem;
+}
+.product-bundle-image-text{
     display: flex;
+    gap: 1.4rem;
     align-items: center;
-    gap: 3px;
 }
+.bundle-product-title{
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+}
+.bundle-product-price{
+    display: none;
+}
+.bundle-add-to-cart{
+    width: 100%;
+    background: none;
+    padding: 16px;
+    font-size: 14px;
+    color: #000;
+    font-weight: 500;
+    border: none;
 
+}
+.add-tocart-container:hover{
+    border: 2px solid black;
+
+}
+.add-tocart-container{
+    height: 48px;
+    width: 100%;
+    border: 1px solid black;
+    position: relative;
+}
+.bundle-spinner{
+    left: 50%;
+}
 
 
 /* styleing for product variant options  */

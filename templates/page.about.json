@@ -1,23 +1,176 @@
-/*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
 {
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "about_us_836dGP": {
+      "type": "about-us",
+      "blocks": {
+        "team_members_4Ly8hi": {
+          "type": "team-members",
+          "settings": {
+            "team_member_image": "shopify:\/\/shop_images\/about-1.png",
+            "team_member_name": "<p><strong>Monica <\/strong><em>VD <\/em><\/p>",
+            "about_team_member": "et började med att jag gjorde en egen babyprodukt 2007. Idag har jag förmånen att jobba med teamet nedan. Min roll är i stort att  guida verksamheten och marknaden att ta sig an de senaste produktnyheterna från våra coola varumärken. På fritiden hänger jag gärna med vår hundar Peter och Doris samt familjen."
+          }
+        },
+        "team_members_Ep7aY3": {
+          "type": "team-members",
+          "settings": {
+            "team_member_image": "shopify:\/\/shop_images\/Anstallda_Bilder2.png",
+            "team_member_name": "<p><strong>Anders<\/strong><em>It-strateg <\/em><\/p>",
+            "about_team_member": "I början jobbade jag kvällar, nätter och helger med Monica. 2010 började jag även jobba dagtid och har sedan dess arbetat med de flesta uppgifterna på REIREI. Idag är mina huvuduppgifter personal och strategi samt att planera och implementera vår digitala kärna. När jag inte jobbar älskar jag att röra mig på skidor eller stå med flugfiskespö i fjällvärlden på sommaren."
+          }
+        },
+        "team_members_hgrYUq": {
+          "type": "team-members",
+          "settings": {
+            "team_member_image": "shopify:\/\/shop_images\/Fredrik_S.png",
+            "team_member_name": "<p><strong>Fredrik <\/strong><em>Inköpschef <\/em><\/p>",
+            "about_team_member": "Jag kom till REIREI i början av 2022 för att tillsammans med alla fantastiska medarbetare fortsätta skapandet av marknadens mest attraktiva varumärkesportfölj och därtill ett optimerat varuflöde. Jag brinner för retail och har många års erfarenhet från sport-, mode- och babybranschen. På fritiden ser mina barn till att jag upprätthåller en aktiv livsstil med sport i fokus."
+          }
+        },
+        "team_members_NCxyrx": {
+          "type": "team-members",
+          "settings": {
+            "team_member_image": "shopify:\/\/shop_images\/Anstallda_Bilder3.png",
+            "team_member_name": "<p><strong>Anton <\/strong><em>Ekonomichef<\/em><\/p>",
+            "about_team_member": "På REIREI har jag det övergripande ansvaret för ekonomifunktionen. Min roll har förändrats sedan jag började 2012 och idag kan jag ägna mig helt och hållet åt ekonomi och finans. På fritiden hänger jag gärna i skogen eller på gymmet."
+          }
+        },
+        "team_members_KiJeqq": {
+          "type": "team-members",
+          "settings": {
+            "team_member_image": "shopify:\/\/shop_images\/Anstallda_Bilder_more.png",
+            "team_member_name": "<p><strong>Fredrik <\/strong><em>Säljchef <\/em><\/p>",
+            "about_team_member": "Började på REIREI 2020 och kommer tidigare från sportbranschen. Ansvarar för försäljningen och arbetar mycket tillsammans med säljteamet och våra kunder i Norden men jobbar även väldigt nära våra varumärken. På min fritid vattnar jag min älskade gräsmatta."
+          }
+        },
+        "team_members_qacB6d": {
+          "type": "team-members",
+          "settings": {
+            "team_member_image": "shopify:\/\/shop_images\/Ida.png",
+            "team_member_name": "<p><strong>Ida <\/strong><em>Marknadschef  (föräldraledig)<\/em><\/p>",
+            "about_team_member": "I november 2021 fick jag glädjen att bli en del av det härliga REIREI-teamet. Mitt ansvar i teamet är också det roligaste – marknadsföringen! Har ni frågor, affärsförslag eller tankar kring kommunikation, varumärke eller marknadsföring, hör gärna av er.  Jag har precis flyttat från Göteborg till Norrköping. På fritiden gillar jag att vara social och aktiv. Att laga mat, ha middagar och njuta av det goda i livet och bli någorlunda på padeltennis"
+          }
+        },
+        "position_devider_rxGzPG": {
+          "type": "position_devider",
+          "settings": {
+            "add_text": "Sälj"
+          }
+        },
+        "team_members_aLBxzE": {
+          "type": "team-members",
+          "settings": {
+            "team_member_image": "shopify:\/\/shop_images\/Anstallda_Bilder_mera.png",
+            "team_member_name": "<p><strong>Agnes <\/strong><em>Key Account Manager, Norge <\/em><\/p>",
+            "about_team_member": "I april 2021 blev jag en del av teamet på Reirei. Jag är uppvuxen i Sydvästra Sverige men bor sedan 2008 i Oslo, där jag stortrivs. Det bästa jag vet är att spendera tid tillsammans med min sambo och våra två små döttrar. I min roll som KAM i Norge, tar jag vara på de kundrelationer vi har och ser samtidigt efter nya samarbeten. Jag tycker det är givande och är stolt över att jobba med de spännande, innovativa varumärken vi erbjuder!"
+          }
+        },
+        "team_members_hQPH73": {
+          "type": "team-members",
+          "settings": {
+            "team_member_image": "shopify:\/\/shop_images\/Johanna_Bild.png",
+            "team_member_name": "<p><strong>ohanna<\/strong><em>Key Account Manager, Sverige<\/em><\/p>",
+            "about_team_member": "I augusti 2021 var det min tur att bli en del av REIREIs team. Tur i dubbel bemärkelse, eftersom det känns just så, att få jobba med en sådan spännande mix av varumärken och produkter. Jag jobbar med försäljning med inriktning mot svenska apotek samt barn- och babybutiker i Sverige, Island och Baltimkum. När jag är ledig är jag gärna ute i skärgården tillsammans med mina två barn."
+          }
+        },
+        "team_members_ViddUA": {
+          "type": "team-members",
+          "settings": {
+            "team_member_image": "shopify:\/\/shop_images\/Martin.png",
+            "team_member_name": "<p><strong>Martin<\/strong><em> Store Coach, Danmark & Norge <\/em><\/p>",
+            "about_team_member": "Min resa på REIREI började i november 2021. Jag jobbar med utbildning, försäljning och merchandising på plats ute hos våra återförsäljare i Norge Danmark och även lite i södra Sverige. Utanför mitt arbete verkar jag även som ishockeytränare, och just hockey är något jag sysslat med hela livet. Förutom hockey tillbringar jag gärna min lediga tid med flickvännen, vännerna och familjen!"
+          }
+        },
+        "team_members_aQpB4G": {
+          "type": "team-members",
+          "settings": {
+            "team_member_image": "shopify:\/\/shop_images\/Anstallda_Bilder_Ella.png",
+            "team_member_name": "<p><strong>Ella<\/strong><em> Key Account Manager Assistant <\/em><\/p>",
+            "about_team_member": "ag hade den stora glädjen att bli en del av teamet på reirei i maj 2022 där min huvudsakliga uppgift är att stötta KAM administrativt. Fritiden spenderar jag gärna med vänner och sambo, helst i kombination med skidåkning. Sparkar även på en fotboll då och då."
+          }
+        },
+        "team_members_URrhC4": {
+          "type": "team-members",
+          "settings": {
+            "team_member_image": "shopify:\/\/shop_images\/Denise_bild_1.png",
+            "team_member_name": "<p><strong>Denise<\/strong><em> Key Account Manager Assistant<\/em><\/p>",
+            "about_team_member": "I juli 2021 hade jag glädjen att få bli en del av REIREI teamet. I min roll som KAM Assistent kommer jag supporta KAM administrativt. När jag är ledig är jag och min sambo ofta ute och testar olika lekparker med vår son eller så umgås vi med vänner och familj."
+          }
+        },
+        "position_devider_U93yFf": {
+          "type": "position_devider",
+          "settings": {
+            "add_text": "Marknad"
+          }
+        },
+        "team_members_hheqDj": {
+          "type": "team-members",
+          "settings": {
+            "team_member_image": "shopify:\/\/shop_images\/Anstallda_Bilder4.png",
+            "team_member_name": "<p><strong>Klara <\/strong><em>Marketing coordinator <\/em><\/p>",
+            "about_team_member": "Jag marknadsför våra varumärken så de kan tas emot på bästa sätt av våra slutkonsumenter. Jag stöttar även våra butiker och säljare med det senaste materialet, oavsett om det är en broschyr, nyhetsbrev eller rörlig film. Bredden på min roll är också det roligaste! När jag inte arbetar brakar jag runt i skogen med hunden Rebus eller ritar slingrande mönster."
+          }
+        },
+        "team_members_cExrVp": {
+          "type": "team-members",
+          "settings": {
+            "team_member_image": "shopify:\/\/shop_images\/Anstallda_Bilder_Per_1.png",
+            "team_member_name": "<p><strong>Per <\/strong><em>Digital Marketing Specialist<\/em><\/p>",
+            "about_team_member": "Under 2024 blev jag rekryterad som en del av den fantastiska reirei-familjen. Min passion i teamet är bolagets digitala marknadsföring. På min fritid njuter jag av att umgås, laga pasta (jag vet, inte så originellt), lyssna på japansk jazz (inte så gnälligt som man kan tro), skapa musik och konst. Jag har även publicerat poesi, ställt ut tavlor och rappat i \"Linköpings stelaste band\" (som det citerades i Corren)."
+          }
+        },
+        "position_devider_RyLiHx": {
+          "type": "position_devider",
+          "settings": {
+            "add_text": "Kundservice "
+          }
+        },
+        "team_members_bEdXW9": {
+          "type": "team-members",
+          "settings": {
+            "team_member_image": "shopify:\/\/shop_images\/Anstallda_Bilder_2.png",
+            "team_member_name": "<p><strong>Anna <\/strong><em>Kundservice<\/em><\/p>",
+            "about_team_member": "jag har varit en del av REIREI teamet sedan Augusti 2019 och jobbar främst med kundtjänst och aftersales. När jag inte jobbar spenderar jag helst tiden med min sambo och dotter. Film, serier och musik ligger mig även varmt om hjärtat."
+          }
+        }
+      },
+      "block_order": [
+        "team_members_4Ly8hi",
+        "team_members_Ep7aY3",
+        "team_members_hgrYUq",
+        "team_members_NCxyrx",
+        "team_members_KiJeqq",
+        "team_members_qacB6d",
+        "position_devider_rxGzPG",
+        "team_members_aLBxzE",
+        "team_members_hQPH73",
+        "team_members_ViddUA",
+        "team_members_aQpB4G",
+        "team_members_URrhC4",
+        "position_devider_U93yFf",
+        "team_members_hheqDj",
+        "team_members_cExrVp",
+        "position_devider_RyLiHx",
+        "team_members_bEdXW9"
+      ],
+      "settings": {
+        "add_your_text_here": "<h1>Om reirei<\/h1><h1>Nordisk distributör sedan 2011<\/h1><h2>Handplockar de bästa produkterna på världsmarknaden inom baby, barn och förälder till återförsäljare och slutkonsument i Norden.<\/h2><p>reirei grundades 2011 och är tack vare sin affärsidé idag ett av Sveriges ledande företag inom mamma, barn och baby. Affärsidén är att handplocka och distribuera världsledande och innovativa varumärken med säker design och hög kvalitet till den nordiska marknaden. Sedan 2021 bedrivs även e-handel riktad direkt mot slutkonsument.<\/p><p>reirei betyder lovely, lovely på japanska och avspeglar sig i vilka produkter som säljs, kulturen i bolaget, men i synnerhet kundbemötandet. Idag är det ca 20 anställda som jobbar utplacerade i Norden samt på huvudkontoret i Linköping. Företagets filosofi är att jobba med kvalitativa, innovativa produkter som underlättar i vardagen, framförallt för barnfamiljen. <\/p><p>2021 omsatte bolaget över 100 miljoner och har flertalet priser på hyllan, såsom DI Gasell 2019 och 2020. reirei är verksamt i Norden samt Island och Estland.<\/p><p>Är du befintlig återförsäljare lägger du enkelt din order i vår <a href=\"https:\/\/reirei.force.com\/store?cclcl=sv_SE\" target=\"_blank\"><strong>B2B<\/strong><\/a> och vill du bli återförsäljare är du varmt välkommen att <a href=\"mailto:support@reirei.se\"><strong>kontakta oss<\/strong><\/a>. <\/p><p> <\/p><h2>Våra varumärken<\/h2><p>AeroSleep, AeroMoov, Bumbo, DockATot, Elvie, Ergobaby, Owlet, Suntribe, SpringYard, Suntribe, UPPAbaby, WaterWipes och Zazu.<\/p><p> <\/p><h2>Våra sociala kanaler<\/h2><p>Följ oss i våra sociala kanaler för att hålla dig ajour med de senaste nyheterna, tävlingar och erbjudanden. <\/p><p> <\/p><p><strong>INSTAGRAM<\/strong> <\/p><ul><li><a href=\"https:\/\/www.instagram.com\/reirei_scandinavia\/\" target=\"_blank\">reirei Scandianvia<\/a> <\/li><li><a href=\"https:\/\/www.instagram.com\/ergobabyscandinavia\/\" target=\"_blank\">Ergobaby Scandianvia<\/a>  <\/li><li><a href=\"https:\/\/www.instagram.com\/uppababy_scandinavia\/\" target=\"_blank\">UPPAbaby Scandianvia<\/a><\/li><\/ul><p><strong>FACEBOOK <\/strong><\/p><ul><li><a href=\"https:\/\/www.facebook.com\/reireiab\" target=\"_blank\">reirei Scandianvia<\/a> <\/li><li><a href=\"https:\/\/www.facebook.com\/ergobabyskandinavien\" target=\"_blank\">Ergobaby Scandianvia<\/a>  <\/li><li><a href=\"https:\/\/www.facebook.com\/uppababyscandinavia\" target=\"_blank\">UPPAbaby Scandianvia<\/a><\/li><\/ul>",
+        "heading": "Teamet",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "about_us_836dGP"
   ]
 }
