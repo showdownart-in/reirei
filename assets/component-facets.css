@@ -1243,3 +1243,9 @@ input.mobile-facets__checkbox {
     padding: 0 1rem 1rem;
   }
 }
+.sticky-collection{
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1;
+}

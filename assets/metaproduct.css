@@ -22,11 +22,73 @@
     border: 2px solid black;
 
 }
+/* Styles for the select box itself */
+.select-box {
+  /* Basic styling */
+  width: 200px; /* Adjust width as needed */
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #000;
+  
+  /* Remove default arrow */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  /* Add custom arrow */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='292.4' height='292.4'%3E%3Cpath fill='%23007CB2' d='M287 69.4a17.6 17.6 0 0 0-13-5.4H18.4c-5 0-9.3 1.8-12.9 5.4A17.6 17.6 0 0 0 0 82.2c0 5 1.8 9.3 5.4 12.9l128 127.9c3.6 3.6 7.8 5.4 12.8 5.4s9.2-1.8 12.8-5.4L287 95c3.5-3.5 5.4-7.8 5.4-12.8 0-5-1.9-9.2-5.5-12.8z'%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px top 50%;
+  background-size: 10px auto;
+  
+  /* Focus styles */
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.select-box:focus {
+  border-color: #007bff;
+}
+
+/* Styles for options */
+.select-box option {
+  background-color: #fff; /* Option background color */
+  color: #000; /* Option text color */
+  font-size: 16px;
+}
+
+ option {
+  background-color: #fff; /* Background color when option is selected */
+  color: #000; /* Text color when option is selected */
+}
+
 .bundle-price{
     display: none;
 }
 .bundle{
     padding-bottom: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+option{
+    font-size: 14px;
+    background-color: #fff;
+}
+select.related-product-select {
+    font-size: 10px;
+    width: 100%;
+    outline: none;
+    box-shadow: none;
+}
+.total-price-currency{
+    display: flex;
+    gap: 1rem;
+    color: #000;
+    font-weight: 800;
+    padding-bottom: 2rem;
 }
 .product-bundle-image-text{
     display: flex;
@@ -49,6 +111,7 @@
     color: #000;
     font-weight: 500;
     border: none;
+    cursor: pointer;
 
 }
 .add-tocart-container:hover{
@@ -57,12 +120,16 @@
 }
 .add-tocart-container{
     height: 48px;
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
     border: 1px solid black;
     position: relative;
 }
 .bundle-spinner{
     left: 50%;
+}
+.add-tocart-container{
+    cursor: pointer;
 }
 
 
