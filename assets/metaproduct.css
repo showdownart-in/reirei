@@ -83,6 +83,9 @@ select.related-product-select {
     outline: none;
     box-shadow: none;
 }
+.bundle-second-btn{
+    width: 36%;
+}
 .total-price-currency{
     display: flex;
     gap: 1rem;
@@ -131,7 +134,9 @@ select.related-product-select {
 .add-tocart-container{
     cursor: pointer;
 }
-
+.bundle-second-btn{
+    display: none !important;
+}
 
 /* styleing for product variant options  */
 
