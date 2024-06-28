@@ -615,3 +615,15 @@
   margin:3rem 0;
 
 }
+@media screen and (max-width:749px){
+  .mobile-gap{
+    margin-right: .5rem;
+  }
+  .mobile-icon-top{
+    margin-right: 1rem;
+  }
+  .location-wrapper{
+    grid-area: announcements;
+  }
+
+}
