@@ -1,0 +1,115 @@
+{{ 'contact-info-main-page.css' | asset_url | stylesheet_tag }}
+<style>
+      .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+</style>
+
+<div class="section-{{ section.id }}-padding">
+  <div class="page-width contact-info-main-page">
+    <div class="contact-info-section">
+      <div class="info-section-container">
+        <div class="contact-image-container">
+          {% render 'picture',
+            class: '',
+            mobileSrc: section.settings.add_contact_image,
+            desktopSrc: section.settings.add_contact_image
+          %}
+        </div>
+
+        <h1>{{ section.settings.add_heading_text }}</h1>
+      </div>
+      <p class="section-contact-info">{{ section.settings.add_details }}</p>
+    </div>
+    <div class="block-heading">
+      {% for block in section.blocks %}
+        <div class="contact-block-heading">
+          <div style="display:flex">{{ block.settings.svg }}</div>
+          <h2>{{ block.settings.social_heading }}</h2>
+        </div>
+        <p>{{ block.settings.add_details }}</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "contact-info",
+  "tag": "section",
+  "class": "contact-info",
+  "settings": [
+    {
+      "type": "image_picker",
+      "label": "Add Contact Image",
+      "id": "add_contact_image"
+    },
+    {
+      "type": "text",
+      "label": "Add Heading Text",
+      "id": "add_heading_text"
+    },
+    {
+      "type": "text",
+      "label": "Add Details",
+      "id": "add_details"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "contact_medium_support",
+      "name": "Contact Medium Support",
+      "settings": [
+        {
+          "type": "text",
+          "label": "SVG icon",
+          "id": "svg"
+        },
+        {
+          "type": "text",
+          "label": "Social Heading",
+          "id": "social_heading"
+        },
+        {
+          "type": "richtext",
+          "label": "Add Details",
+          "id": "add_details"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Info"
+    }
+  ]
+}
+{% endschema %}
