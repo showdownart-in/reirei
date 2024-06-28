@@ -59,3 +59,29 @@
     padding-bottom: 82.5rem;
   }
 }
+/* custom css for article  */
+.all-article-img img{
+height: auto;
+width: 100%;
+cursor: pointer;
+}
+.article-title{
+  color: #000;
+  text-decoration:none ;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-weight: 600;
+
+}
+.article-title:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+.blog-item{
+  margin-bottom: 3rem;
+}
+.blog-page{
+  margin-top: 3rem;
+}
