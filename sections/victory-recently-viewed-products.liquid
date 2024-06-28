@@ -1,4 +1,4 @@
-{%- capture section_settings -%}
+{% comment %} {%- capture section_settings -%}
 {
   "productId": {{ product.id | json }}
 }
@@ -50,6 +50,86 @@
             {%- endfor -%}
           {%- endfor -%}
         </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div> {% endcomment %}
+
+{%- capture section_settings -%}
+{
+  "productId": {{ product.id | json }}
+}
+{%- endcapture -%}
+
+<script src="{{ 'collection-carousel.js' | asset_url }}" defer></script>
+<script src="{{ 'product-card.js' | asset_url }}" defer="defer"></script>
+{{ 'product-card.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'victory.js' |  asset_url }}" defer></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div 
+  data-section-id="{{ section.id }}" 
+  data-section-type="wizaah-recently-viewed-products" 
+  data-section-settings='{{ section_settings }}'
+  class="section-{{ section.id }}-padding"
+>
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 class="search-heading brand-main-title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+
+    <div class="recentlyviewed__container">
+      {%- if template.name == 'search' -%}
+        <splide-carousel
+          class="splide"
+          id="{{ section.id }}"
+          data-desktop-per-page="4"
+          data-tab-per-page="3"
+          data-mobile-per-page="2"
+          data-gap="20"
+          data-gaptab="20"
+          data-desktoparrow="false"
+          data-mobilearrow="false"
+          data-desktoppagination="true"
+          data-mobilepagination="true"
+          data-desktop-padding-left="0"
+          data-desktop-padding-right="0"
+          data-mobilepaddingleft="0"
+          data-mobilepaddingright="0"
+          data-loop="loop"
+          data-autoplay="false"
+        >
+          <div class="splide__track">
+            <div class="splide__list">
+              {%- assign parsed_terms = search.terms | split: ' OR ' -%}
+              {%- for parsed_term in parsed_terms -%}
+                {%- assign id = parsed_term | split: 'id:' | last | times: 1 -%}
+
+                {%- for product in search.results -%}
+                  {%- if product.id == id -%}
+                    <div class="splide__slide">
+                      {% render 'product-snippet', product: product, sectionId: section.id %}
+                    </div>
+                    {%- break -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        </splide-carousel>
       {%- endif -%}
     </div>
   </div>

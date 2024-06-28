@@ -1,0 +1,83 @@
+ <div class="top-div large-up-hide medium-hide">
+  <div class="main-div">
+   
+    <div class="home flex-tool-bar">
+      <a href="https://reireiab.myshopify.com/">
+      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 50 50">
+        <path d="M 24.962891 1.0546875 A 1.0001 1.0001 0 0 0 24.384766 1.2636719 L 1.3847656 19.210938 A 1.0005659 1.0005659 0 0 0 2.6152344 20.789062 L 4 19.708984 L 4 46 A 1.0001 1.0001 0 0 0 5 47 L 18.832031 47 A 1.0001 1.0001 0 0 0 19.158203 47 L 30.832031 47 A 1.0001 1.0001 0 0 0 31.158203 47 L 45 47 A 1.0001 1.0001 0 0 0 46 46 L 46 19.708984 L 47.384766 20.789062 A 1.0005657 1.0005657 0 1 0 48.615234 19.210938 L 41 13.269531 L 41 6 L 35 6 L 35 8.5859375 L 25.615234 1.2636719 A 1.0001 1.0001 0 0 0 24.962891 1.0546875 z M 25 3.3222656 L 44 18.148438 L 44 45 L 32 45 L 32 26 L 18 26 L 18 45 L 6 45 L 6 18.148438 L 25 3.3222656 z M 37 8 L 39 8 L 39 11.708984 L 37 10.146484 L 37 8 z M 20 28 L 30 28 L 30 45 L 20 45 L 20 28 z"></path>
+      </svg>
+    </a>
+     <div>Home</div>
+    </div>
+    <div class="search flex-tool-bar">
+     <div class="large-up-hide  search-icon-1 mobile-search-icon">
+      {% render 'header-search', input_id: 'Search-In-Modal' %}
+    </div>
+    <div>Search</div>
+    </div>
+    <div class="collection-icon flex-tool-bar">
+      <a href="https://reireiab.myshopify.com/collections/all">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 384.97 384.97"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xml:space="preserve"
+      >
+        <g><g id="Grid"><path d="M144.364,0H24.061C10.767,0,0,10.767,0,24.061v120.303c0,13.281,10.767,24.061,24.061,24.061h120.303 c13.293,0,24.061-10.779,24.061-24.061V24.061C168.424,10.767,157.657,0,144.364,0z M144.364,144.364H24.061V24.061h120.303 V144.364z"></path><path d="M360.909,0H240.606c-13.293,0-24.061,10.767-24.061,24.061v120.303c0,13.281,10.767,24.061,24.061,24.061h120.303    c13.281,0,24.061-10.779,24.061-24.061V24.061C384.97,10.767,374.191,0,360.909,0z M360.909,144.364H240.606V24.061h120.303 V144.364z"></path><path d="M360.909,216.545H240.606c-13.293,0-24.061,10.779-24.061,24.061v120.303c0,13.293,10.767,24.061,24.061,24.061h120.303 c13.281,0,24.061-10.767,24.061-24.061V240.606C384.97,227.313,374.191,216.545,360.909,216.545z M360.909,360.909H240.606 V240.606h120.303V360.909z"></path><path d="M144.364,216.545H24.061C10.767,216.545,0,227.325,0,240.606v120.303c0,13.293,10.767,24.061,24.061,24.061h120.303 c13.293,0,24.061-10.767,24.061-24.061V240.606C168.424,227.313,157.657,216.545,144.364,216.545z M144.364,360.909H24.061 V240.606h120.303V360.909z"></path></g></g>
+      </svg>
+    </a>
+    <div> Collections</div>
+    </div>
+    <div class="header-icon flex-tool-bar">
+      <a
+        href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+        class="header__icon  search-icon-1 header-mobile-icon header__icon--account link focus-inset{% if section.settings.menu != blank %} {% endif %}"
+      >
+        <account-icon>
+          {%- if customer and customer.has_avatar? -%}
+            {{ customer | avatar }}
+          {%- else -%}
+            {% render 'icon-account' %}
+          {%- endif -%}
+        </account-icon>
+        <span class="visually-hidden">
+          {%- liquid
+            if customer
+              echo 'customer.account_fallback' | t
+            else
+              echo 'customer.log_in' | t
+            endif
+          -%}
+        </span>
+      </a>
+      <div>Account</div>
+    </div>
+
+    <div class="cart-icon-tool flex-tool-bar">
+      <a
+        href="{{ routes.cart_url }}"
+        class="header__icon header__icon--cart header-mobile-icon link focus-inset sticky-cart"
+        id="cart-icon-bubble"
+      >
+        {%- liquid
+          if cart == empty
+            render 'icon-cart-empty'
+          else
+            render 'icon-cart'
+          endif
+        -%}
+        <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+        {%- if cart != empty -%}
+          <div class="cart-count-bubble">
+            {%- if cart.item_count < 100 -%}
+              <span aria-hidden="true">{{ cart.item_count }}</span>
+            {%- endif -%}
+            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+          </div>
+        {%- endif -%}
+      </a>
+      <div>Cart</div>
+    </div>
+  </div>
+</div> 
+

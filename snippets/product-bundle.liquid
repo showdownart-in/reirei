@@ -4,221 +4,238 @@
   data-product-url="{{ product.url }}"
 >
   <div class="mm-bundle-product-wrapper">
-    <div class="total-price"></div>
+    <div class="total-price-currency">
+      <div class="total-price"></div>
+      <span>{{ cart.currency.iso_code }}</span>
+    </div>
     {% for bundle_product in bundle_products %}
       <div class="mm-bundle-product bundle" data-product-id="{{ bundle_product.id }}">
-        
         <div class="product-bundle-image-text">
-        <div class="image-meta-container">
-          
-          <img class="product-image" src="{{ bundle_product.featured_image | img_url: '300x300' }}" alt="{{ bundle_product.title }}">
-        </div>
-        <div class="bundle-product-title">{{ bundle_product.title }}</div>
+          <div class="image-meta-container">
+            <img
+              class="product-image"
+              src="{{ bundle_product.featured_image | img_url: '300x300' }}"
+              alt="{{ bundle_product.title }}"
+            >
+          </div>
         </div>
 
-        {% if bundle_product.variants.size >= 1 %}
-          <select name="product-variant" class="product-variant-select">
-            {% for variant in bundle_product.variants %}
-  <option value="{{ variant.id }}" 
-          data-price="{{ variant.price | money_without_currency }}" 
-          data-formatted-price="{{ variant.price | money }}"
-          data-image="{{ variant.featured_image | img_url: '300x300' }}">
-    {{ variant.title }} - {{ variant.price | money }}
-  </option>
-{% endfor %}
-          </select>
-        {% else %}
-          <div class="single-variant">
-            {{ bundle_product.variants.first.title }} - {{ bundle_product.variants.first.price | money }}
-          </div>
-          <input type="hidden" name="product-variant" value="{{ bundle_product.variants.first.id }}">
-        {% endif %}
+        {%- assign linked_products = bundle_product.metafields.custom.linked_products.value -%}
+
+        <select name="related-product" class="related-product-select">
+          {% for linked_product in linked_products %}
+            <option
+              value="{{ linked_product.id }}"
+              data-price="{{ linked_product.price | money_without_currency }}"
+              data-formatted-price="{{ linked_product.price | money }}"
+              data-title="{{ linked_product.title }}"
+              data-image="{{ linked_product.featured_image | img_url: '300x300' }}"
+              data-variant-id="{{ linked_product.variants.first.id }}"
+            >
+              {{ linked_product.title }}
+            </option>
+          {% endfor %}
+        </select>
+
         <div class="product-price bundle-price">{{ bundle_product.variants.first.price | money }}</div>
       </div>
     {% endfor %}
   </div>
 
   <div>
-  <div class="add-tocart-container">
-  <button class="add-to-cart bundle-add-to-cart">Add to Cart</button>
-    <div class="loading__spinner my-spinner hidden bundle-spinner">
-     <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-       <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-      </svg>
-     </div>
-  </div>
- 
+    <div class="main-button">
+      <div class="add-tocart-container ">
+        <button class="add-to-cart bundle-add-to-cart">Add to Cart</button>
+        <div class="loading__spinner my-spinner hidden bundle-spinner">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            class="spinner"
+            viewBox="0 0 66 66"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+          </svg>
+        </div>
+      </div>
     </div>
+    <div class="second-btn bundle-second-btn">
+    <div class="add-tocart-container">
+      <button class="add-to-cart bundle-add-to-cart">Add to Cart</button>
+      <div class="loading__spinner my-spinner hidden bundle-spinner">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          class="spinner"
+          viewBox="0 0 66 66"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+        </svg>
+      </div>
+    </div>
+    </div>
+  </div>
 
   <script type="application/json" id="ProductJson-{{ sectionId }}">
     {{ bundle_products | json }}
   </script>
 </product-bundle>
+
 <script>
-class ProductBundle extends HTMLElement {
-  constructor() {
-    super();
-    this.bundleProducts = this.querySelectorAll('.mm-bundle-product');
-    this.variantSelects = this.querySelectorAll('.product-variant-select');
-    this.addToCartButton = this.querySelector('.add-to-cart');
-    this.totalPriceElement = this.querySelector('.total-price');
+  class ProductBundle extends HTMLElement {
+    constructor() {
+      super();
+      this.bundleProducts = this.querySelectorAll('.mm-bundle-product');
+      this.relatedProductSelects = this.querySelectorAll('.related-product-select');
+      this.addToCartButton = this.querySelector('.add-to-cart');
+      this.totalPriceElement = this.querySelector('.total-price');
+      this.spinner = this.querySelector('.loading__spinner');
 
-    this.bindEvents();
-    this.updateTotalPrice();
-     const buyButtons = this.querySelectorAll(".bundle-add-to-cart");
-      buyButtons.forEach((button) => {
-        button.addEventListener("click", (event) => {
-          // Show the loading spinner
-          this.showLoadingSpinner(true);
-           this.toggleAddToCartText(false);
+      this.bindEvents();
+      this.updateTotalPrice();
+    }
 
+    bindEvents() {
+      this.relatedProductSelects.forEach((select) => {
+        select.addEventListener('change', this.handleRelatedProductChange.bind(this));
+      });
+
+      this.addToCartButton.addEventListener('click', this.handleAddToCart.bind(this));
+    }
+
+    handleRelatedProductChange(event) {
+      const select = event.target;
+      const productContainer = select.closest('.mm-bundle-product');
+      const selectedOption = select.options[select.selectedIndex];
+      const price = selectedOption.dataset.formattedPrice;
+      const imageUrl = selectedOption.dataset.image;
+      const variantId = selectedOption.dataset.variantId; // Get the variant ID
+      const title = selectedOption.dataset.title;
+
+      // Update price
+      productContainer.querySelector('.product-price').textContent = price;
+
+      // Update image
+      productContainer.querySelector('.product-image').src = imageUrl;
+
+      // Update the variant ID in the product container
+      productContainer.dataset.variantId = variantId;
+
+      this.updateTotalPrice();
+    }
+
+    updateTotalPrice() {
+      let total = 0;
+
+      this.bundleProducts.forEach((product) => {
+        const priceElement = product.querySelector('.product-price');
+        const priceText = priceElement.textContent.trim().replace(/[^\d]/g, '');
+        let price = parseInt(priceText, 10);
+        price = Math.floor(price / 100);
+
+        console.log(price);
+
+        if (!isNaN(price)) {
+          // Check if price is valid number
+          total += price;
+        }
+      });
+
+      // Update total price element
+      this.totalPriceElement.textContent = `Total: ${total.toFixed(2)}`; // Format total to 2 decimal places
+    }
+
+    handleAddToCart() {
+      this.showLoadingSpinner(true);
+      this.toggleAddToCartText(false);
+
+      const selectedProducts = [];
+
+      this.bundleProducts.forEach((productElement) => {
+        const selectElement = productElement.querySelector('.related-product-select');
+        const selectedOption = selectElement.options[selectElement.selectedIndex];
+        const variantId = selectedOption.dataset.variantId;
+
+        selectedProducts.push({
+          id: variantId,
+          quantity: 1,
         });
       });
-  }
 
-  bindEvents() {
-    this.variantSelects.forEach(select => {
-      select.addEventListener('change', this.handleVariantChange.bind(this));
-    });
+      const formData = {
+        items: selectedProducts,
+      };
 
-    this.addToCartButton.addEventListener('click', this.handleAddToCart.bind(this));
-  }
+      fetch(window.Shopify.routes.root + 'cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Added to cart:', data);
+          this.updateCartIconBubble();
+          this.showLoadingSpinner(false);
+          this.toggleAddToCartText(true);
+          this.showAddToCartSuccess();
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          this.showLoadingSpinner(false);
+          this.toggleAddToCartText(true);
+        });
+    }
 
-  handleVariantChange(event) {
-    const select = event.target;
-    const productContainer = select.closest('.mm-bundle-product');
-    const selectedOption = select.options[select.selectedIndex];
-    const price = parseFloat(selectedOption.dataset.price); // Use dataset.price for raw numeric value
-    const imageUrl = selectedOption.dataset.image;
-
-    // Update price
-    productContainer.querySelector('.product-price').textContent = selectedOption.textContent;
-
-    // Update image
-    productContainer.querySelector('.product-image').src = imageUrl;
-
-    this.updateTotalPrice();
-  }
- 
-
-  updateTotalPrice() {
-    let total = 0;
-
-    this.bundleProducts.forEach(product => {
-      const priceElement = product.querySelector('.product-price');
-      const priceText = priceElement.textContent.trim().replace(/[^\d]/g, '');
-      let price = parseInt(priceText, 10);
-       price = Math.floor(price / 100);
-
-      console.log(price); 
-
-      if (!isNaN(price)) { // Check if price is valid number
-        total += price;
-      }
-    });
-
-    // Update total price element
-    this.totalPriceElement.textContent = `Total: ${total.toFixed(2)}`; // Format total to 2 decimal places
-  }
-
-  handleAddToCart() {
-    const selectedVariants = [];
-
-    this.bundleProducts.forEach(productElement => {
-      const selectElement = productElement.querySelector('.product-variant-select');
-      const variantId = selectElement ? selectElement.value : productElement.querySelector('input[name="product-variant"]').value;
-
-      selectedVariants.push({
-        id: variantId,
-        quantity: 1
-      });
-    });
-
-    const formData = {
-      items: selectedVariants
-    };
-
-    fetch(window.Shopify.routes.root + 'cart/add.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-    .then(response => response.json())
-    .then(data => {
-
-        console.log('added to cart')
-        updateCartIconBubble();
-       this.showLoadingSpinner(false);
-       this.toggleAddToCartText(true);
-       this.showAddToCartSuccess();
-        
-
-
-        
-
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  }
-  showLoadingSpinner(show) {
-      const spinner = this.querySelector(".loading__spinner");
+    showLoadingSpinner(show) {
       if (show) {
-        spinner.classList.remove("hidden");
+        this.spinner.classList.remove('hidden');
       } else {
-        spinner.classList.add("hidden");
+        this.spinner.classList.add('hidden');
       }
     }
-        showAddToCartSuccess() {
-      const successDiv = document.querySelector(".add-to-card-sucess");
-      successDiv.classList.add("show");
+
+    toggleAddToCartText(show) {
+      if (show) {
+        this.addToCartButton.style.display = 'inline';
+      } else {
+        this.addToCartButton.style.display = 'none';
+      }
+    }
+
+    showAddToCartSuccess() {
+      const successDiv = document.querySelector('.add-to-card-sucess');
+      successDiv.classList.add('show');
 
       // Hide the success message after 3 seconds
       setTimeout(() => {
-        successDiv.classList.remove("show");
+        successDiv.classList.remove('show');
       }, 3000);
     }
-    
-    toggleAddToCartText(show) {
-      const addToCartText = this.querySelector(".bundle-add-to-cart");
-      if (show) {
-        addToCartText.style.display = "inline";
-      } else {
-        addToCartText.style.display = "none";
-      }
+
+    updateCartIconBubble() {
+      fetch(window.Shopify.routes.root + 'cart.js')
+        .then((response) => response.json())
+        .then((cartData) => {
+          let cartIcon = document.querySelector('#cart-icon-bubble');
+          let cartIconBubble = document.querySelector('.cart-count-bubble');
+          if (cartIconBubble) {
+            cartIconBubble.textContent = cartData.item_count;
+          } else {
+            cartIconBubble = document.createElement('div');
+            cartIconBubble.classList.add('cart-count-bubble');
+            cartIconBubble.textContent = cartData.item_count;
+            cartIcon.appendChild(cartIconBubble);
+          }
+          console.log('Cart updated:', cartData);
+        })
+        .catch((error) => {
+          console.error('Error fetching cart data:', error);
+        });
     }
- 
-}
+  }
 
- function updateCartIconBubble() {
-  fetch(window.Shopify.routes.root + 'cart.js')
-    .then(response => response.json())
-    .then(cartData => {
-        let cartIcon = document.querySelector("#cart-icon-bubble");
-      let cartIconBubble = document.querySelector(".cart-count-bubble");
-      if (cartIconBubble) {
-        cartIconBubble.textContent = cartData.item_count; 
-        
-        // Update with actual count from cartData
-      }
-      else{
-        cartIconBubble = document.createElement('div');
-        cartIconBubble.classList.add('cart-count-bubble');
-        cartIconBubble.textContent = cartData.item_count; // Set the count when creating the bubble
-        console.log(cartIcon)
-        cartIcon.appendChild(cartIconBubble);
-
-    }
-      console.log('Cart updated:', cartData);
-    })
-    .catch(error => {
-      console.error('Error fetching cart data:', error);
-    });
-}
-   
-
-customElements.define('product-bundle', ProductBundle);
-
+  customElements.define('product-bundle', ProductBundle);
 </script>

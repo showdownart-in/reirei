@@ -576,9 +576,9 @@ details > * {
   --duration-extra-long: 600ms;
   --duration-extra-longer: 750ms;
   --duration-extended: 3s;
-  --ease-out-slow: cubic-bezier(0, 0, 0.3, 1);
+  /* --ease-out-slow: cubic-bezier(0, 0, 0.3, 1);
   --animation-slide-in: slideIn var(--duration-extra-long) var(--ease-out-slow) forwards;
-  --animation-fade-in: fadeIn var(--duration-extra-long) var(--ease-out-slow);
+  --animation-fade-in: fadeIn var(--duration-extra-long) var(--ease-out-slow); */
 }
 
 .underlined-link,
@@ -3528,7 +3528,7 @@ a.hulk-sidebar-widget.heart-wishlist-animation{
 }
 @media screen and (max-width:990px){
   .second-btn{
-    bottom: 5px;
+    bottom: 11px;
     top: none;
     position: fixed;
     margin: 0 !important;
@@ -3537,6 +3537,9 @@ a.hulk-sidebar-widget.heart-wishlist-animation{
     z-index: 11;
     left: 0;
     padding: 10px 0;
+}
+.bundle-second-btn{
+  bottom: 68px;
 }
 .second-btn .product-form{
   margin: 0 !important;
@@ -3553,3 +3556,80 @@ a.hulk-sidebar-widget.heart-wishlist-animation{
 .hamburger-close-btn svg{
   height: 2rem;
 }
+.main-div{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  width:100%;
+  z-index: 23;
+}
+.top-div{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 12;
+}
+.search-icon-1 .header__icon{
+  width: fit-content;
+  height: fit-content;
+}
+.main-div svg{
+  height: 25px;
+  width: 25px;
+}
+.main-div div{
+  margin: 0;
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  color: #000;
+  font-weight: 600;
+}
+.main-div div span{
+  color: #fff;
+}
+.main-div .header__icon .icon{
+  color: #000;
+}
+.top-div details[open]>.search-modal {
+    opacity: 1;
+    animation: animateMenuOpen var(--duration-default) ease;
+    position: fixed;
+    height: fit-content;
+    top: 1%;
+    min-height: fit-content;
+}
+.top-div .header-mobile-icon {
+        width: 3rem;
+        height: fit-content;
+    }
+    .top-div .header__search span{
+      align-items: flex-start;
+    }
+    .flex-tool-bar{
+      display: flex;
+      flex-direction: column;
+    }
+    .top-div a {
+      height: 2.5rem;
+    }
+    .cart-icon-tool{
+     width: 4rem;
+    justify-content: center;
+    align-items: baseline !important;
+    }
+
+    @media screen and (max-width:749px){
+    .section-header.shopify-section-group-header-group {
+    z-index: 0;
+    }
+    .shopify-section-group-header-group {
+    z-index: 0;
+}
+
+    }
+    .cart-notification{
+      display: none;
+    }
