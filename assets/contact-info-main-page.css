@@ -1,0 +1,32 @@
+.contact-info-main-page h1 , .contact-info-main-page h2{
+      margin: 0;
+}
+.info-section-container{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+.contact-info-main-page{
+    max-width: 106rem;
+
+}
+.section-contact-info{
+    font-size: 1.4rem;
+    color: #000;
+}
+.contact-block-heading{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.contact-block-heading svg{
+    height: 50px;
+    width: 50px;
+
+}
+.contact-info-section{
+    padding-bottom: 4rem;
+}
+.info-section-container h1{
+    font-size: 24px;
+}

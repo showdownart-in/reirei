@@ -1,6 +1,9 @@
 .contact img {
   max-width: 100%;
 }
+.contact-submit-btn{
+  width: 100%;
+}
 
 .contact .form__message {
   align-items: flex-start;
