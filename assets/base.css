@@ -2454,6 +2454,10 @@ product-info .loading__spinner:not(.hidden) ~ *,
   height: auto;
   max-width: 100%;
 }
+.footer-logo img{
+  height: 14%;
+  width: 14%;
+}
 
 .header__heading-logo-wrapper {
   width: 100%;

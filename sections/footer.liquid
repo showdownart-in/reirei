@@ -51,7 +51,7 @@
       and has_social_icons == true
       or section.settings.enable_follow_on_shop
     -%}
-      <div class="logo_container">
+      <div class="logo_container footer-logo">
         {% comment %} {% render 'picture', desktopImage: section.settings.footer_logo %} {% endcomment %}
 
         {%- assign logo_alt = section.settings.footer_logo.alt | default: shop.name | escape -%}
@@ -93,8 +93,10 @@
                       {%- when '@app' -%}
                         {% render block %}
                       {%- when 'link_list' -%}
+                        <h3>{{ block.settings.heading }}</h3>
                         {%- if block.settings.menu != blank -%}
                           <ul class="footer-block__details-content list-unstyled">
+
                             {%- for link in block.settings.menu.links -%}
                               <li>
                                 <a
@@ -190,10 +192,10 @@
                 <div class="footer-block__newsletter flex_column gap_2">
                   <div class="flex_column gap_1 gap_16">
                     {%- if section.settings.newsletter_heading != blank -%}
-                      <div class="newsletter_heading">{{ section.settings.newsletter_heading }}</div>
+                      <div class="newsletter_heading h2">{{ section.settings.newsletter_heading }}</div>
                     {%- endif -%}
                     {%- if section.settings.newsletter_subheading != blank -%}
-                      <div class="caption">{{ section.settings.newsletter_subheading }}</div>
+                      <div class="caption h2 newsletter-data">{{ section.settings.newsletter_subheading }}</div>
                     {%- endif -%}
                   </div>
                   {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
@@ -239,7 +241,7 @@
                       </div>
                       {%- if form.errors -%}
                         <small class="newsletter-form__message form__message" id="ContactFooter-error">
-                          {%- render 'icon' with 'error' -%}
+                          
                           {{- form.errors.translated_fields.email | capitalize }}
                           {{ form.errors.messages.email -}}
                         </small>
@@ -274,8 +276,10 @@
                   {% endcase %}
                   {% case block.type %}
                     {% when 'contact_details' %}
+                      <h3 class="h2">{{ block.settings.heading }}</h3>
                       <div class="contact-info">
                         <div class="mobile-icon-details">
+                          <h3>{{  bllock.settings.heading }}</h3>
                           <div class="mobile-icon footer-icons">
                           {% render 'mobile' %}
                           {{ block.settings.phone }}
@@ -428,22 +432,10 @@
         {%- endif -%}
       </div>
       <div class="footer__column footer__column--info">
-        {%- if section.settings.payment_enable -%}
-          <div class="footer__payment">
-            <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
-            <ul class="list list-payment" role="list">
-              {%- for type in shop.enabled_payment_types -%}
-                <li class="list-payment__item">
-                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-                </li>
-              {%- endfor -%}
-            </ul>
-          </div>
-        {%- endif -%}
       </div>
     </div>
     <div class="footer__content-bottom-wrapper color-{{ section.settings.color_scheme_bottom }}{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
-      <div class="caption page-width footer_bottom_block_pd">
+      <div class="caption page-width copyright__content-footer  footer_bottom_block_pd">
         <small class="copyright__content">
           {{- shop.name | link_to: routes.root_url -}}
           &nbsp; &copy; All Rights Reserved - {{ 'now' | date: '%Y' }}
@@ -462,7 +454,22 @@
           </ul>
         {%- endif -%}
       </div>
+        <div class="footer__column footer__column--info">
+        {%- if section.settings.payment_enable -%}
+          <div class="footer__payment">
+            <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
+            <ul class="list list-payment" role="list">
+              {%- for type in shop.enabled_payment_types -%}
+                <li class="list-payment__item">
+                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+      </div>
     </div>
+    
   </div>
 </footer>
 
@@ -576,6 +583,12 @@
       "type": "contact_details",
       "name": "Contact Details",
       "settings": [
+        {
+         "type": "text",
+         "id": "heading",
+         "default": "Contact",
+         "label": "Add Contact Heading"
+        },
         {
           "type": "inline_richtext",
           "id": "phone",
