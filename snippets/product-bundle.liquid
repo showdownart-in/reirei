@@ -44,7 +44,7 @@
 
   <div>
     <div class="main-button">
-      <div class="add-tocart-container ">
+      <div class="add-tocart-container">
         <button class="add-to-cart bundle-add-to-cart">Add to Cart</button>
         <div class="loading__spinner my-spinner hidden bundle-spinner">
           <svg
@@ -60,20 +60,20 @@
       </div>
     </div>
     <div class="second-btn bundle-second-btn">
-    <div class="add-tocart-container">
-      <button class="add-to-cart bundle-add-to-cart">Add to Cart</button>
-      <div class="loading__spinner my-spinner hidden bundle-spinner">
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          class="spinner"
-          viewBox="0 0 66 66"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-        </svg>
+      <div class="add-tocart-container">
+        <button class="add-to-cart bundle-add-to-cart">Add to Cart</button>
+        <div class="loading__spinner my-spinner hidden bundle-spinner">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            class="spinner"
+            viewBox="0 0 66 66"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+          </svg>
+        </div>
       </div>
-    </div>
     </div>
   </div>
 
@@ -93,15 +93,28 @@
       this.spinner = this.querySelector('.loading__spinner');
 
       this.bindEvents();
+      this.selectDefaultProducts();
       this.updateTotalPrice();
     }
 
     bindEvents() {
       this.relatedProductSelects.forEach((select) => {
-        select.addEventListener('change', this.handleRelatedProductChange.bind(this));
+        select.addEventListener('change', (event) => {
+          this.handleRelatedProductChange(event);
+          this.updateTotalPrice();
+        });
       });
 
       this.addToCartButton.addEventListener('click', this.handleAddToCart.bind(this));
+    }
+
+    selectDefaultProducts() {
+      this.relatedProductSelects.forEach((select) => {
+        if (select.options.length > 0) {
+          select.selectedIndex = 0;
+          this.handleRelatedProductChange({ target: select });
+        }
+      });
     }
 
     handleRelatedProductChange(event) {
@@ -110,7 +123,7 @@
       const selectedOption = select.options[select.selectedIndex];
       const price = selectedOption.dataset.formattedPrice;
       const imageUrl = selectedOption.dataset.image;
-      const variantId = selectedOption.dataset.variantId; // Get the variant ID
+      const variantId = selectedOption.dataset.variantId;
       const title = selectedOption.dataset.title;
 
       // Update price
@@ -121,8 +134,6 @@
 
       // Update the variant ID in the product container
       productContainer.dataset.variantId = variantId;
-
-      this.updateTotalPrice();
     }
 
     updateTotalPrice() {
@@ -143,8 +154,9 @@
       });
 
       // Update total price element
-      this.totalPriceElement.textContent = `Total: ${total.toFixed(2)}`; // Format total to 2 decimal places
+      this.totalPriceElement.textContent = ` ${total.toFixed(2)}`; // Format total to 2 decimal places
     }
+
 
     handleAddToCart() {
       this.showLoadingSpinner(true);
