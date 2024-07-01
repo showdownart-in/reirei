@@ -54,6 +54,11 @@
   <div class="flex-contaner">
   <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
   <slider-component id="GalleryViewer-{{ section.id }}" class="slider-mobile-gutter slider-main">
+     <div class="thumbnail-navigation">
+  <button id="prevThumbnail" class="thumbnail-nav-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg></button>
+  <button id="nextThumbnail" class="thumbnail-nav-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg></button>
+</div>
+
     <a class="skip-to-content-link button visually-hidden quick-add-hidden" href="#ProductInfo-{{ section.id }}">
       {{ 'accessibility.skip_to_product_info' | t }}
     </a>
@@ -317,5 +322,105 @@
     </slider-component>
   {%- endif -%}
   </div>
+
+
+ 
 </media-gallery>
+
+{% comment %} <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const thumbnails = document.querySelectorAll('.thumbnail-list__item');
+  const prevButton = document.getElementById('prevThumbnail');
+  const nextButton = document.getElementById('nextThumbnail');
+  let currentIndex = 0;
+
+  function updateThumbnailSelection(index) {
+    thumbnails.forEach((thumbnail, i) => {
+      if (i === index) {
+        thumbnail.querySelector('button').click();
+        thumbnail.querySelector('button').setAttribute('aria-current', 'true');
+      } else {
+        thumbnail.querySelector('button').setAttribute('aria-current', 'false');
+      }
+    });
+  }
+
+  function goToNextThumbnail() {
+    currentIndex = (currentIndex + 1) % thumbnails.length;
+    updateThumbnailSelection(currentIndex);
+  }
+
+  function goToPrevThumbnail() {
+    currentIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+    updateThumbnailSelection(currentIndex);
+  }
+
+  nextButton.addEventListener('click', goToNextThumbnail);
+  prevButton.addEventListener('click', goToPrevThumbnail);
+
+  // Initialize the first thumbnail as selected
+  updateThumbnailSelection(currentIndex);
+
+  // Hide navigation buttons if there's only one thumbnail
+  if (thumbnails.length <= 1) {
+    prevButton.style.display = 'none';
+    nextButton.style.display = 'none';
+  }
+});
+</script> {% endcomment %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const thumbnailList = document.querySelector('#Slider-Thumbnails-{{ section.id }}');
+  const thumbnails = document.querySelectorAll('.thumbnail-list__item');
+  const prevButton = document.getElementById('prevThumbnail');
+  const nextButton = document.getElementById('nextThumbnail');
+  let currentIndex = 0;
+
+  function updateThumbnailSelection(index) {
+    thumbnails.forEach((thumbnail, i) => {
+      if (i === index) {
+        thumbnail.querySelector('button').click();
+        thumbnail.querySelector('button').setAttribute('aria-current', 'true');
+        scrollToThumbnail(thumbnail);
+      } else {
+        thumbnail.querySelector('button').setAttribute('aria-current', 'false');
+      }
+    });
+  }
+
+  function scrollToThumbnail(thumbnail) {
+    const thumbnailRect = thumbnail.getBoundingClientRect();
+    const listRect = thumbnailList.getBoundingClientRect();
+    
+    if (thumbnailRect.bottom > listRect.bottom) {
+      thumbnailList.scrollTop += thumbnailRect.bottom - listRect.bottom;
+    } else if (thumbnailRect.top < listRect.top) {
+      thumbnailList.scrollTop -= listRect.top - thumbnailRect.top;
+    }
+  }
+
+  function goToNextThumbnail() {
+    currentIndex = (currentIndex + 1) % thumbnails.length;
+    updateThumbnailSelection(currentIndex);
+  }
+
+  function goToPrevThumbnail() {
+    currentIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+    updateThumbnailSelection(currentIndex);
+  }
+
+  nextButton.addEventListener('click', goToNextThumbnail);
+  prevButton.addEventListener('click', goToPrevThumbnail);
+
+  // Initialize the first thumbnail as selected
+  updateThumbnailSelection(currentIndex);
+
+  // Hide navigation buttons if there's only one thumbnail
+  if (thumbnails.length <= 1) {
+    prevButton.style.display = 'none';
+    nextButton.style.display = 'none';
+  }
+});
+</script>
+
 

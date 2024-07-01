@@ -49,6 +49,8 @@
           %}
         </fieldset>
       {%- elsif picker_type == 'button' -%}
+      {% assign bundle_products = product.metafields.custom.linked_products.value %}
+      {% if bundle_products != blank %}
         <fieldset class="js product-form__input product-form__input--pill">
           <legend class="form__label">{{ option.name }}</legend>
           {% render 'product-variant-options',
@@ -58,6 +60,7 @@
             picker_type: picker_type
           %}
         </fieldset>
+      {% endif %}
       {%- else -%}
         <div class="product-form__input product-form__input--dropdown">
           <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">

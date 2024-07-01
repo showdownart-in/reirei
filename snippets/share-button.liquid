@@ -1,49 +1,134 @@
-{% comment %}
-  Renders share button.
-  Accepts:
-  - block: {Object} passes in the block information.
-  - share_link: {String} url to be added to the input the user will get/copy.
 
-  Usage:
-  {% render 'share-button',
-    block: block,
-    share_link: share_url
-  %}
-{% endcomment %}
-<script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
+<style>
+  .share-container {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
 
-<share-button id="Share-{{ section.id }}" class="share-button quick-add-hidden" {{ block.shopify_attributes }}>
-  <button class="share-button__button hidden">
-    {% render 'icon-share' %}
-    {{ block.settings.share_label | escape }}
-  </button>
-  <details id="Details-{{ block.id }}-{{ section.id }}">
-    <summary class="share-button__button">
-      {% render 'icon-share' %}
-      {{ block.settings.share_label | escape }}
-    </summary>
-    <div class="share-button__fallback motion-reduce">
-      <div class="field">
-        <span id="ShareMessage-{{ section.id }}" class="share-button__message hidden" role="status"> </span>
-        <input
-          type="text"
-          class="field__input"
-          id="ShareUrl-{{ section.id }}"
-          value="{{ share_link }}"
-          placeholder="{{ 'general.share.share_url' | t }}"
-          onclick="this.select();"
-          readonly
+  .share-icon-shopify {
+    cursor: pointer;
+  }
+
+  .social-share {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+  }
+
+  .social-share__item {
+    display: inline;
+    height:3rem;
+    width: 3rem;
+  }
+
+  .social-share__item a {
+    text-decoration: none;
+    color:black;
+  }
+</style>
+
+
+
+
+
+
+{%- liquid
+  assign _permalink_share = product.url | default: article.url | default: page.url
+  assign _permalink_share2 = shop.url | append: _permalink_share
+  assign perLinkURL = permalink_share | default: _permalink_share2
+  unless share_title
+    assign share_title = product.title | default: article.title | default: page.title | default: shop.name
+  endunless
+  assign perTitle = share_title | url_param_escape
+  unless share_image
+    assign share_image = product.featured_image | default: article.image | default: settings.share_image | default: page_image | default: settings.logo
+  endunless
+  assign perImage = share_image | image_url: width: 1024, height: 1024
+-%}
+<div class="share-icon-shopify">
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+    <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
+  </svg>
+  <div class="share-container" style="display: none;">
+  <h3>Copy Link</h3>
+    <input type="text" id="shareLink" value="{{ perLinkURL }}" readonly>
+    <button id="copyButton"><svg class="icon icon-clipboard" width="11" height="13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M2 1a1 1 0 011-1h7a1 1 0 011 1v9a1 1 0 01-1 1V1H2zM1 2a1 1 0 00-1 1v9a1 1 0 001 1h7a1 1 0 001-1V3a1 1 0 00-1-1H1zm0 10V3h7v9H1z" fill="currentColor"></path></svg></button>
+    <button id="closeButton">X</button>
+    <h3>Share</h3>
+    <ul class="social-share">
+      
+    
+        <li class="social-share__item"><a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ perLinkURL }}" title='{{ 'general.social.links.facebook' | t }}' data-no-instant rel="noopener noreferrer nofollow" target="_blank">{%- render 'icon-facebook' -%} </a></li>
+   
+        <li class="social-share__item"><a class="twitter" href="http://twitter.com/share?text={{ perTitle }}&amp;url={{ perLinkURL }}" title='{{ 'general.social.links.twitter' | t }}' data-no-instant rel="noopener noreferrer nofollow" target="_blank">{%- render 'icon-twitter' -%}</a></li>
+   
+   
+       
+            <li class="social-share__item"><a class="pinterest" href="http://pinterest.com/pin/create/button/?url={{ perLinkURL }}&amp;media=http:{{perImage}}&amp;description={{ perTitle }}" title='{{ 'general.social.links.pinterest' | t }}' data-no-instant rel="noopener noreferrer nofollow" target="_blank">{%- render 'icon-pinterest' -%}</a></li>
+       
+      <li class="social-share__item">
+        <a
+          class="whatsapp"
+          href="https://wa.me/?text={{ perTitle }}&#x20;{{ perLinkURL }}"
+          title=""
+          data-no-instant
+          rel="nofollow"
+          target="_blank"
         >
-        <label class="field__label" for="ShareUrl-{{ section.id }}">{{ 'general.share.share_url' | t }}</label>
-      </div>
-      <button class="share-button__close hidden">
-        {% render 'icon-close' %}
-        <span class="visually-hidden">{{ 'general.share.close' | t }}</span>
-      </button>
-      <button class="share-button__copy">
-        {% render 'icon-clipboard' %}
-        <span class="visually-hidden">{{ 'general.share.copy_to_clipboard' | t }}</span>
-      </button>
-    </div>
-  </details>
-</share-button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="currentColor"
+            class="bi bi-whatsapp"
+            viewBox="0 0 16 16"
+          >
+            <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var shareIcon = document.querySelector('.share-icon-shopify svg');
+    var closeButton = document.getElementById('closeButton');
+    var copyButton = document.getElementById('copyButton');
+    var shareContainer = document.querySelector('.share-container');
+
+    shareIcon.addEventListener('click', function (event) {
+      event.stopPropagation();
+      shareContainer.style.display = 'block';
+    });
+
+    closeButton.addEventListener('click', function (event) {
+      event.stopPropagation();
+      console.log("Close button clicked");
+      shareContainer.style.display = 'none';
+    });
+
+    copyButton.addEventListener('click', function (event) {
+      event.stopPropagation();
+      copyToClipboard();
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!shareContainer.contains(event.target) && !shareIcon.contains(event.target)) {
+        shareContainer.style.display = 'none';
+      }
+    });
+  });
+
+  function copyToClipboard() {
+    copyButton.style.backgroundColor = 'black';
+    var copyText = document.getElementById("shareLink");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); 
+    document.execCommand("copy");
+    
+  }
+</script>
