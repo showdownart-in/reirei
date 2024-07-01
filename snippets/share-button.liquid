@@ -9,6 +9,7 @@
 
   .share-icon-shopify {
     cursor: pointer;
+    padding-top:3rem;
   }
 
   .social-share {
@@ -28,6 +29,29 @@
     text-decoration: none;
     color:black;
   }
+  .share-icon-shopify{
+    position:relative;
+  }
+  #closeButton{
+    position: absolute;
+    top: 0;
+    background: none;
+    border: none;
+    font-size:3rem;
+  }
+  #shareLink{
+    padding: 1rem 2rem;
+    width: 70%;
+    outline:none;
+  }
+
+  #copyButton{
+    padding:1rem 2rem;
+    outline:none;
+  }
+  .share-icon-shopify{
+  z-index: 999;
+}
 </style>
 
 
@@ -93,22 +117,26 @@
     </ul>
   </div>
 </div>
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var shareIcon = document.querySelector('.share-icon-shopify svg');
     var closeButton = document.getElementById('closeButton');
     var copyButton = document.getElementById('copyButton');
     var shareContainer = document.querySelector('.share-container');
+    
 
     shareIcon.addEventListener('click', function (event) {
       event.stopPropagation();
       shareContainer.style.display = 'block';
+      
     });
 
     closeButton.addEventListener('click', function (event) {
       event.stopPropagation();
       console.log("Close button clicked");
       shareContainer.style.display = 'none';
+
     });
 
     copyButton.addEventListener('click', function (event) {
@@ -124,11 +152,10 @@
   });
 
   function copyToClipboard() {
-    copyButton.style.backgroundColor = 'black';
+    copyButton.style.backgroundColor = 'gray'; // Changed to black as an example
     var copyText = document.getElementById("shareLink");
     copyText.select();
-    copyText.setSelectionRange(0, 99999); 
+    copyText.setSelectionRange(0, 99999); // For mobile devices
     document.execCommand("copy");
-    
   }
 </script>

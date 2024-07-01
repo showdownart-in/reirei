@@ -3701,3 +3701,24 @@ a.hulk-sidebar-widget.heart-wishlist-animation {
 .cart-notification {
   display: none;
 }
+/* overlay */
+.overlay-content{
+  display: none;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: black;
+    opacity: .3;
+    z-index: 300;
+}
+
+/* Style the select box */
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+.select {
+  position: relative;
+}
+

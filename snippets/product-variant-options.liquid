@@ -139,7 +139,7 @@
                       class="disabled"
                     {% endif %}
                   >
-                  <div class="image-meta-container-1">
+                  <div class="image-meta-container-1 {% unless bundle_product.available %}disabled-btn{% endunless %}">
                     <a href="{{ bundle_product.url }}">
                       {%
                         render 'picture',
