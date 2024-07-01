@@ -6,23 +6,60 @@ if (!customElements.get("product-cart-element")) {
       this.productUrl = this.dataset.productUrl;
       this.variants = JSON.parse(this.querySelector("script").textContent);
       this.currentVariant = this.variants[0] || {};
-      let currentValue = 1;
+      this.bundlePriceElement = this.querySelector(".bundle-price");
 
       this.addEventListener("input", this.inputChange.bind(this));
 
       const buyButtons = this.querySelectorAll(".custom-buy-btn");
       buyButtons.forEach((button) => {
         button.addEventListener("click", (event) => {
-          // Show the loading spinner
           this.showLoadingSpinner(true);
-
-          // Hide the "Add to cart" text
           this.toggleAddToCartText(false);
-
-          // Add the product to the cart with the current quantity
-          this.addToCart(this.currentVariant.id, currentValue);
+          this.addToCart(this.currentVariant.id, 1);
         });
       });
+
+      if (this.bundlePriceElement) {
+        this.initializeBundlePrice();
+      }
+    }
+
+    initializeBundlePrice() {
+      const bundleProductsData = JSON.parse(
+        this.bundlePriceElement.dataset.bundleProducts
+      );
+      let totalPrice = 0;
+
+      bundleProductsData.forEach((product) => {
+        if (product.variants && product.variants.length > 0) {
+          const priceText = product.variants[0].price
+            .toString()
+            .replace(/[^\d]/g, "");
+          let price = parseInt(priceText, 10);
+          price = price / 100; // Convert cents to dollars without rounding
+
+          if (!isNaN(price)) {
+            totalPrice += price;
+          }
+        }
+      });
+
+      // Format the total price to always show two decimal places
+      const formattedTotalPrice = totalPrice.toFixed(2);
+
+      this.bundlePriceElement.innerHTML = `
+    <p class="bundle-total-price">${formattedTotalPrice}</p>
+  `;
+    }
+
+    calculateSavings(products, bundlePrice) {
+      const totalRegularPrice = products.reduce((sum, product) => {
+        if (product.variants && product.variants.length > 0) {
+          return sum + product.variants[0].price;
+        }
+        return sum;
+      }, 0);
+      return totalRegularPrice - bundlePrice;
     }
 
     showLoadingSpinner(show) {
@@ -46,8 +83,6 @@ if (!customElements.get("product-cart-element")) {
     showAddToCartSuccess() {
       const successDiv = document.querySelector(".add-to-card-sucess");
       successDiv.classList.add("show");
-
-      // Hide the success message after 3 seconds
       setTimeout(() => {
         successDiv.classList.remove("show");
       }, 3000);
@@ -76,7 +111,6 @@ if (!customElements.get("product-cart-element")) {
       })
         .then((response) => {
           if (response.ok) {
-            console.log(response);
             return response.json();
           } else {
             throw new Error("Failed to add to cart");
@@ -88,25 +122,13 @@ if (!customElements.get("product-cart-element")) {
           document.querySelector("#cart-icon-bubble").innerHTML =
             html.querySelector("#cart-icon-bubble").innerHTML;
           console.log("Cart updated:", cartData);
-          // Perform any additional actions or UI updates as needed
-
-          // Show the success message
           this.showAddToCartSuccess();
-
-          // Hide the loading spinner
           this.showLoadingSpinner(false);
-
-          // Show the "Add to cart" text
           this.toggleAddToCartText(true);
         })
         .catch((error) => {
           console.error("Error adding to cart:", error);
-          // Handle the error or show an error message to the user
-
-          // Hide the loading spinner
           this.showLoadingSpinner(false);
-
-          // Show the "Add to cart" text in case of error
           this.toggleAddToCartText(true);
         });
     }
@@ -118,7 +140,6 @@ if (!customElements.get("product-cart-element")) {
       this.querySelectorAll("input").forEach(function (input) {
         if (input.checked) {
           selectedValues.push(input.value);
-          console.log(input.value);
         }
       });
 

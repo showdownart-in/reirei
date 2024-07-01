@@ -8,49 +8,42 @@
         "link_list_WyNgzN": {
           "type": "link_list",
           "settings": {
-            "heading": "",
+            "heading": "heading",
             "menu": "footer-1"
           }
         },
         "contact_details_wJWi9e": {
           "type": "contact_details",
           "settings": {
+            "heading": "Contact",
             "phone": "+46 (0) 13-51030",
             "email": "kundservice@reirei.se",
             "location": "Sverige"
           }
         },
-        "text_dgQ7Tf": {
-          "type": "text",
+        "link_list_dTHR6k": {
+          "type": "link_list",
           "settings": {
-            "heading": "Nyhetsbrev",
-            "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
-          }
-        },
-        "text_i7eJLp": {
-          "type": "text",
-          "settings": {
-            "heading": "Nyhetsbrev",
-            "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
+            "heading": "heading",
+            "menu": "second-footer-menu"
           }
         }
       },
       "block_order": [
         "link_list_WyNgzN",
         "contact_details_wJWi9e",
-        "text_dgQ7Tf",
-        "text_i7eJLp"
+        "link_list_dTHR6k"
       ],
       "settings": {
         "color_scheme": "scheme-2",
         "color_scheme_bottom": "",
         "footer_logo": "shopify:\/\/shop_images\/Reirei_Logo-02_1.svg",
         "newsletter_enable": true,
-        "newsletter_heading": "",
-        "newsletter_subheading": "",
+        "newsletter_heading": "<strong>Nyhetsbrev<\/strong>",
+        "newsletter_subheading": "Fyll i din e-post och få information om våra senaste nyheter och dessutom 10% rabatt på din första order från reirei.se (villkor gäller).Genom att skriva upp dig på vårt nyhetsbrev godkänner du vår ",
         "enable_follow_on_shop": true,
         "show_social": true,
-        "enable_country_selector": true,
+        "enable_country_selector": false,
         "enable_language_selector": false,
         "payment_enable": true,
         "show_policy": false,

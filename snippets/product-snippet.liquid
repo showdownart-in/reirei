@@ -33,6 +33,12 @@
   {% assign discount_percentage = discount_amount | times: 100.0 | divided_by: current_variant.compare_at_price | round %}
 {% endif %}
 
+{% assign bundle_products = product.metafields.custom.bundle_product.value %}
+{% if bundle_products != blank %}
+  <div class="data-price">
+    <div class="bundle-price" data-bundle-products="{{ bundle_products | json | escape }}"></div><span> {{ cart.currency.iso_code }}</span>
+  </div>
+    {% else %}
 <div class="price-container">
   <p class="product-price{% if discount_percentage > 50 %} red-price{% endif %}">{{ current_variant.price | money }}</p>
   <s>{{ current_variant.compare_at_price | money }}</s>
@@ -44,7 +50,11 @@
         {% endif %}
   </div>
 </div>
-
+{% endif %}
+      
+      {% if bundle_products != blank %}
+        <div class="bundle-view"><a href="{{ product.url }}" class="bundle-view-child"> VIEW Product</a></div>
+        {% else %}
       <div class="cart-and-whishlist">
       <div class="my-btn custom-buy-btn {% unless current_variant.available %}disabled-btn{% endunless %}">
         <span class="add-text"> Add to cart</span>
@@ -56,6 +66,7 @@
      </div>
     
     </div>
+   {% endif %}
     </div>
     <div class="whishlist" style=“text-align: end;“>{% render 'hulkapps-wishlist-collection-btn', productId: product.id, variantId: product.selected_or_first_available_variant.id %}</div>
 

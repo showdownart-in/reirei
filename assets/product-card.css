@@ -121,3 +121,26 @@ cursor: not-allowed;
     border: 2px solid black;
 }
 
+.bundle-view{
+    border: 1px solid black;
+    text-align: center;
+    height: 4.5rem;
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: .7rem;
+
+}
+.data-price{
+    display: flex;
+    gap: .5rem;
+}
+.bundle-view-child{
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
